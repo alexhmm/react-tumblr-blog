@@ -1,11 +1,17 @@
-import { Blog } from './blog.interface';
-import { Reblog } from './reblog.interface';
+import { Info } from '../../../shared/models/tumblr.types';
 
 /**
  * Tumblr post interface.
  */
 export interface Post {
-  blog: Blog;
+  blog: {
+    name: string;
+    title: string;
+    description: string;
+    url: string;
+    uuid: string;
+    updated: number;
+  };
   blog_name: string;
   can_like: boolean;
   can_reblog: boolean;
@@ -21,7 +27,10 @@ export interface Post {
   note_count: number;
   photos: any[];
   post_url: string;
-  reblog: Reblog;
+  reblog: {
+    comment: string;
+    tree_html: string;
+  };
   reblog_key: string;
   recommended_color?: any;
   recommended_source?: any;
@@ -34,4 +43,10 @@ export interface Post {
   timestamp: number;
   trail: any;
   type: string;
+}
+
+export interface PostsResponse {
+  blog: Info;
+  posts: Post[];
+  total_posts: number;
 }

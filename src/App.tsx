@@ -1,11 +1,25 @@
+import { Outlet, ReactLocation, Router } from 'react-location';
+
 // Components
-import { Posts } from './modules/posts/pages/Posts/Posts';
+import Title from './shared/components/Title/Title';
+
+// Router
+import { routes } from './shared/router/routes';
 
 // Styles
 import './App.sass';
 
 function App() {
-  return <Posts />;
+  const location = new ReactLocation();
+
+  return (
+    <>
+      <Router location={location} routes={routes}>
+        <Title />
+        <Outlet />
+      </Router>
+    </>
+  );
 }
 
 export default App;

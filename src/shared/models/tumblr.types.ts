@@ -1,4 +1,4 @@
-export interface BlogInfo {
+export interface Info {
   ask: boolean;
   ask_anon: boolean;
   ask_page_title: string;

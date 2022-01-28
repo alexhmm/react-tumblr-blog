@@ -1,7 +1,7 @@
 import { stringify } from 'query-string';
 
 // Models
-import { PostsResponse } from '../models/posts-response.interface';
+import { PostsResponse } from '../models/posts.types';
 
 export const usePosts = () => {
   /**
