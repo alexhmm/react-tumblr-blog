@@ -1,0 +1,7 @@
+@import '../../../../shared/styles/styles.scss';
+
+.about {
+  @include flex;
+  @include justify-center;
+  @include w-full;
+}

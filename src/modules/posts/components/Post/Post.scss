@@ -1,0 +1,22 @@
+@import '../../../../shared/styles/styles.scss';
+
+.post {
+  max-height: 90vh;
+  max-width: 100%;
+  @include my(8);
+}
+
+@media (min-width: $md) {
+  .post {
+    max-width: 90vw;
+    @include my(12);
+    @include shadow-sm;
+  }
+}
+
+@media (min-width: $lg) {
+  .post {
+    @include my(16);
+    @include shadow-md;
+  }
+}

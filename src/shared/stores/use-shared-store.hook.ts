@@ -2,6 +2,7 @@ import create, { State } from 'zustand';
 
 // Models
 import { Subtitle } from '../models/shared.types';
+import { Theme } from '../models/theme.enum';
 
 export interface SharedState extends State {
   theme: string;
@@ -13,7 +14,7 @@ export interface SharedState extends State {
 }
 
 export const useSharedStore = create<SharedState>((set) => ({
-  theme: 'light',
+  theme: localStorage.getItem('theme') || Theme.Light,
   subtitle: null,
   title: process.env.REACT_APP_TITLE ? process.env.REACT_APP_TITLE : undefined,
   setSubtitle: (subtitle: Subtitle | null) => set({ subtitle }),

@@ -1,0 +1,8 @@
+@import '../../../../shared/styles/styles.scss';
+
+.posts {
+  @include flex;
+  @include flex-col;
+  @include items-center;
+  @include w-full;
+}

@@ -1,7 +1,8 @@
+// Models
 import { Post as IPost } from '../../models/posts.types';
 
 // Styles
-import './Post.sass';
+import './Post.scss';
 
 type PostProps = {
   post: IPost;

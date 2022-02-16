@@ -1,24 +1,30 @@
-import { Outlet, ReactLocation, Router } from 'react-location';
+import { BrowserRouter } from 'react-router-dom';
+import { Box, ThemeProvider } from '@mui/material';
 
 // Components
 import Title from './shared/components/Title/Title';
 
+// Hooks
+import { useTheme } from './shared/hooks/use-theme.hook';
+
 // Router
-import { routes } from './shared/router/routes';
+import { AppRouter } from './shared/router/AppRouter';
 
 // Styles
-import './App.sass';
+import './App.scss';
 
 function App() {
-  const location = new ReactLocation();
+  const { themeGet } = useTheme();
 
   return (
-    <>
-      <Router location={location} routes={routes}>
-        <Title />
-        <Outlet />
-      </Router>
-    </>
+    <ThemeProvider theme={themeGet()}>
+      <Box bgcolor="background.default" color="text.primary" className="app">
+        <BrowserRouter>
+          <Title />
+          <AppRouter />
+        </BrowserRouter>
+      </Box>
+    </ThemeProvider>
   );
 }
 

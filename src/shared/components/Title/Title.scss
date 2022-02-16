@@ -1,0 +1,7 @@
+@import '../../styles/styles.scss';
+
+.title {
+  @include fixed;
+  @include left(4);
+  @include top(4);
+}

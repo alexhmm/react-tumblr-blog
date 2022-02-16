@@ -1,0 +1,51 @@
+@mixin border {
+  border-width: 1px !important;
+}
+
+@mixin border($size) {
+  border-width: $size * 1px !important;
+}
+
+@mixin border-l {
+  border-left-width: 1px !important;
+}
+
+@mixin border-b($size) {
+  border-bottom-width: $size * 1px !important;
+}
+
+@mixin border-r {
+  border-right-width: 1px !important;
+}
+
+@mixin border-t {
+  border-top-width: 1px !important;
+}
+
+@mixin border-transparent {
+  border-color: transparent !important;
+}
+
+@mixin border-dotted {
+  border-style: dotted !important;
+}
+
+@mixin rounded {
+  border-radius: 0.25rem !important ;
+}
+
+@mixin rounded-md {
+  border-radius: 0.375rem !important ;
+}
+
+@mixin rounded-lg {
+  border-radius: 0.5rem !important ;
+}
+
+@mixin rounded-xl {
+  border-radius: 0.75rem !important ;
+}
+
+@mixin rounded-full {
+  border-radius: 9999px !important ;
+}

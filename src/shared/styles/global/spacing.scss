@@ -1,0 +1,64 @@
+@mixin m($size) {
+  margin: $size * 0.25rem !important;
+}
+
+@mixin mb($size) {
+  margin-bottom: $size * 0.25rem !important;
+}
+
+@mixin ml($size) {
+  margin-left: $size * 0.25rem !important;
+}
+
+@mixin mr($size) {
+  margin-right: $size * 0.25rem !important;
+}
+
+@mixin mt($size) {
+  margin-top: $size * 0.25rem !important;
+}
+
+@mixin mx($size) {
+  margin-left: $size * 0.25rem !important;
+  margin-right: $size * 0.25rem !important;
+}
+
+@mixin mx-p($percent) {
+  margin-left: $percent !important;
+  margin-right: $percent !important;
+}
+
+@mixin my($size) {
+  margin-bottom: $size * 0.25rem !important;
+  margin-top: $size * 0.25rem !important;
+}
+
+@mixin p($size) {
+  padding: $size * 0.25rem !important;
+}
+
+@mixin pb($size) {
+  padding-bottom: $size * 0.25rem !important;
+}
+
+@mixin pl($size) {
+  padding-left: $size * 0.25rem !important;
+}
+
+@mixin pr($size) {
+  padding-right: $size * 0.25rem !important;
+}
+
+@mixin pt($size) {
+  padding-top: $size * 0.25rem !important;
+}
+
+@mixin px($size) {
+  padding-left: $size * 0.25rem !important;
+  padding-right: $size * 0.25rem !important;
+}
+
+@mixin py($size) {
+  padding-bottom: $size * 0.25rem !important;
+  padding-top: $size * 0.25rem !important;
+}

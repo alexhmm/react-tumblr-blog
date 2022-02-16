@@ -1,0 +1,102 @@
+@mixin font-bold {
+  font-weight: 700 !important;
+}
+
+@mixin font-semibold {
+  font-weight: 600 !important;
+}
+
+@mixin normal-case {
+  text-transform: none !important;
+}
+
+@mixin text-left {
+  text-align: left;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin text-right {
+  text-align: right;
+}
+
+@mixin text-justify {
+  text-align: justify;
+}
+
+@mixin text-xs {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+@mixin text-sm {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+@mixin text-base {
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+}
+
+@mixin text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+@mixin text-xl {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+@mixin text-2xl {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
+@mixin text-3xl {
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important;
+}
+
+@mixin text-4xl {
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
+@mixin text-5xl {
+  font-size: 3rem !important;
+  line-height: 1 !important;
+}
+
+@mixin text-6xl {
+  font-size: 3.75rem !important;
+  line-height: 1 !important;
+}
+
+@mixin text-7xl {
+  font-size: 4.5rem !important;
+  line-height: 1 !important;
+}
+
+@mixin text-8xl {
+  font-size: 6rem !important;
+  line-height: 1 !important;
+}
+
+@mixin text-9xl {
+  font-size: 8rem !important;
+  line-height: 1 !important;
+}
+
+@mixin truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+@mixin uppercase {
+  text-transform: uppercase !important;
+}

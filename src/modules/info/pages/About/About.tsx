@@ -1,3 +1,8 @@
+import { Box } from '@mui/material';
+
+// Styles
+import './About.scss';
+
 export const About = () => {
-  return <div>About</div>;
+  return <Box className="about">About Page</Box>;
 };

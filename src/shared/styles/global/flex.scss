@@ -1,0 +1,69 @@
+@mixin flex {
+  display: flex !important;
+}
+
+@mixin flex-center {
+  align-items: center !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+@mixin flex-col {
+  flex-direction: column !important;
+}
+
+@mixin flex-col-reverse {
+  flex-direction: column-reverse !important;
+}
+
+@mixin grow {
+  flex-grow: 1 !important;
+}
+
+@mixin flex-row {
+  flex-direction: row !important;
+}
+
+@mixin flex-row-reverse {
+  flex-direction: row-reverse !important;
+}
+
+@mixin flex-wrap {
+  flex-wrap: wrap !important;
+}
+
+@mixin items-center {
+  align-items: center !important;
+}
+
+@mixin items-end {
+  align-items: flex-end !important;
+}
+
+@mixin items-start {
+  align-items: flex-start !important;
+}
+
+@mixin justify-between {
+  justify-content: space-between !important;
+}
+
+@mixin justify-center {
+  justify-content: center !important;
+}
+
+@mixin justify-end {
+  justify-content: flex-end !important;
+}
+
+@mixin justify-start {
+  justify-content: flex-start !important;
+}
+
+@mixin shrink {
+  flex-shrink: 1;
+}
+
+@mixin shrink-0 {
+  flex-shrink: 0;
+}
