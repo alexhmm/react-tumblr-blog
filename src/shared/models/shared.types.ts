@@ -1,4 +1,4 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
 
 export interface MenuLink {
   title: string;
@@ -6,7 +6,7 @@ export interface MenuLink {
 }
 
 export interface MenuExternalLink extends MenuLink {
-  icon: IconProp;
+  icon: [IconPrefix, IconName];
 }
 
 export interface Subtitle {

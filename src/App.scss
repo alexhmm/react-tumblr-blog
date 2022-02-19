@@ -3,3 +3,7 @@
 .app {
   @include min-h-screen;
 }
+
+.MuiDrawer-paper {
+  background-image: none !important;
+}

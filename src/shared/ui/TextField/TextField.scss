@@ -1,0 +1,11 @@
+@import '../../styles/styles.scss';
+
+.text-field {
+  @include w-full;
+  & .MuiInput-root {
+    @include w-full;
+  }
+  &-reset {
+    @include p(1);
+  }
+}

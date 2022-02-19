@@ -4,5 +4,12 @@
   @include flex;
   @include flex-col;
   @include items-center;
+  @include pt(16);
   @include w-full;
+}
+
+@media (min-width: $sm) {
+  .posts {
+    @include pt(32);
+  }
 }

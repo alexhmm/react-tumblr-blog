@@ -3,20 +3,20 @@
 .post {
   max-height: 90vh;
   max-width: 100%;
-  @include my(8);
+  @include mb(8);
 }
 
 @media (min-width: $md) {
   .post {
     max-width: 90vw;
-    @include my(12);
+    @include mb(16);
     @include shadow-sm;
   }
 }
 
 @media (min-width: $lg) {
   .post {
-    @include my(16);
+    @include mb(32);
     @include shadow-md;
   }
 }

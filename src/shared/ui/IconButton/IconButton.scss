@@ -1,0 +1,12 @@
+@import '../../styles/styles.scss';
+
+.icon-button {
+  @include min-w(0);
+  @include rounded-md;
+  &-disabled {
+    @include opacity(0.1);
+  }
+  &-icon {
+    @include transition-colors;
+  }
+}

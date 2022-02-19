@@ -1,0 +1,27 @@
+@import '../../styles/styles.scss';
+
+.icon-text-button {
+  @include flex;
+  @include items-center;
+  @include min-w(0);
+  @include p(0);
+  @include rounded-none;
+  &-text {
+    @include border-b-solid(1);
+    @include font-normal;
+    @include ml(2);
+    @include normal-case;
+    @include text-base;
+    @include translateY(0.5);
+    @include transition-colors;
+  }
+}
+
+@media (min-width: $lg) {
+  .icon-text-button {
+    &-text {
+      @include border-b-solid(2);
+      @include translateY(1);
+    }
+  }
+}

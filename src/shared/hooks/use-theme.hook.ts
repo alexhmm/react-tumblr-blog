@@ -4,11 +4,7 @@ import { createTheme, Theme } from '@mui/material/styles';
 import { Theme as ETheme } from '../models/theme.enum';
 
 // Stores
-import useSharedStore, { SharedState } from '../stores/use-shared-store.hook';
-
-// Stores
-
-declare module '@mui/material/styles' {}
+import { SharedState, useSharedStore } from '../stores/use-shared-store.hook';
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -34,17 +30,7 @@ const breakpoints = {
   }
 };
 
-const themePrimaryParse =
-  process.env.REACT_APP_THEME_PRIMARY &&
-  JSON.parse(process.env.REACT_APP_THEME_PRIMARY);
-
-const primary = {
-  dark: themePrimaryParse.dark ?? 'darkblue',
-  light: themePrimaryParse.light ?? 'lightblue',
-  main: themePrimaryParse.main ?? 'blue'
-};
-
-const typography = { fontFamily: "'Open Sans', sans-serif" };
+const typography = { fontFamily: "'Space Grotesk', sans-serif" };
 
 export const themeDark = createTheme({
   breakpoints,
@@ -55,8 +41,7 @@ export const themeDark = createTheme({
     bg: {
       card: '#2b2b2b'
     },
-    mode: 'dark',
-    primary
+    mode: 'dark'
   },
   typography
 });
@@ -70,8 +55,7 @@ export const themeLight = createTheme({
     bg: {
       card: '#f3f6f9'
     },
-    mode: 'light',
-    primary
+    mode: 'light'
   },
   typography
 });

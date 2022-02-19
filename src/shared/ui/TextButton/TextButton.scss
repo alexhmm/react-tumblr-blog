@@ -1,0 +1,16 @@
+@import '../../styles/styles.scss';
+
+.text-button {
+  @include border-b-solid(1);
+  @include font-normal;
+  @include min-w(0);
+  @include normal-case;
+  @include p(0);
+  @include rounded-none;
+}
+
+@media (min-width: $lg) {
+  .text-button {
+    @include border-b-solid(2);
+  }
+}

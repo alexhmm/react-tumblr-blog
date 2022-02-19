@@ -10,7 +10,8 @@
   border-left-width: 1px !important;
 }
 
-@mixin border-b($size) {
+@mixin border-b-solid($size) {
+  border-bottom-style: solid;
   border-bottom-width: $size * 1px !important;
 }
 
@@ -28,6 +29,10 @@
 
 @mixin border-dotted {
   border-style: dotted !important;
+}
+
+@mixin rounded-none {
+  border-radius: 0px !important;
 }
 
 @mixin rounded {

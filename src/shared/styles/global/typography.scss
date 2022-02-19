@@ -1,9 +1,13 @@
-@mixin font-bold {
-  font-weight: 700 !important;
+@mixin font-normal {
+  font-weight: 400 !important;
 }
 
 @mixin font-semibold {
   font-weight: 600 !important;
+}
+
+@mixin font-bold {
+  font-weight: 700 !important;
 }
 
 @mixin normal-case {

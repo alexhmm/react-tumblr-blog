@@ -5,3 +5,17 @@
   @include left(4);
   @include top(4);
 }
+
+@media (min-width: $sm) {
+  .title {
+    @include left(8);
+    @include top(8);
+  }
+}
+
+@media (min-width: $lg) {
+  .title {
+    @include left(16);
+    @include top(12);
+  }
+}

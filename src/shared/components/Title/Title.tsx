@@ -1,5 +1,8 @@
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button } from '@mui/material';
+
+// Components
+import { TextButton } from '../../ui/TextButton/TextButton';
 
 // Styles
 import './Title.scss';
@@ -7,13 +10,17 @@ import './Title.scss';
 export const Title = () => {
   const navigate = useNavigate();
 
+  /**
+   * Handler to navigate to home screen on title click.
+   */
+  const onTitleClick = useCallback(() => {
+    navigate('/');
+    // eslint-disable-next-line
+  }, []);
+
   return (
-    <Box className="title">
-      <Box onClick={() => navigate(-1)}>Back</Box>
-      <Box onClick={() => navigate('/')}>Home</Box>
-      <Button onClick={() => navigate('/tagged/berlin')}>Tagged</Button>
-    </Box>
+    <TextButton classes="title" size="large" onClick={onTitleClick}>
+      {process.env.REACT_APP_TITLE ?? ''}
+    </TextButton>
   );
 };
-
-export default Title;
