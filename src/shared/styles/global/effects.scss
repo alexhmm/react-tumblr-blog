@@ -1,5 +1,5 @@
 @mixin opacity($opacity) {
-  opacity: $opacity;
+  opacity: $opacity !important;
 }
 
 @mixin shadow-sm {

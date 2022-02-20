@@ -4,12 +4,47 @@
   @include flex;
   @include flex-col;
   @include items-center;
-  @include pt(16);
+  @include py(16);
   @include w-full;
+  &-info {
+    @include fixed;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    &-empty {
+      @include text-xl;
+    }
+    &-tagged {
+      letter-spacing: 1rem;
+      @include text-2xl;
+    }
+  }
+  &-loading {
+    @include bottom(4);
+    @include fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    @include transition-opacity;
+    @include z(20);
+  }
 }
 
 @media (min-width: $sm) {
   .posts {
-    @include pt(32);
+    @include py(24);
+  }
+}
+
+@media (min-width: $xl) {
+  .posts {
+    @include py(16);
+    &-info {
+      &-empty {
+        @include text-3xl;
+      }
+      &-tagged {
+        @include text-6xl;
+      }
+    }
   }
 }

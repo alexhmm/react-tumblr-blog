@@ -12,6 +12,7 @@ import {
 import { faCopyright as farCopyright } from '@fortawesome/free-regular-svg-icons';
 
 import {
+  faChevronLeft as fasChevronLeft,
   faMoon as fasMoon,
   faSearch as fasSearch,
   faSun as fasSun,
@@ -20,6 +21,7 @@ import {
 
 // Add icons to library to use them in the app
 library.add(
+  fasChevronLeft,
   farCopyright,
   fabFacebook,
   fabGithub,

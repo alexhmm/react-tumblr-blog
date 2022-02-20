@@ -12,7 +12,7 @@ export const AppRouter = () => {
           <Route path=":id" element={<Post />}></Route>
         </Route> */}
         <Route path="tagged">
-          <Route path=":tag" element={<Posts />} />
+          <Route path=":tagged" element={<Posts />} />
         </Route>
       </Route>
       <Route path="about" element={<About />} />

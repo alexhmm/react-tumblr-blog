@@ -11,8 +11,6 @@
     @include font-normal;
     @include ml(2);
     @include normal-case;
-    @include text-base;
-    @include translateY(0.5);
     @include transition-colors;
   }
 }

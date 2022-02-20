@@ -1,5 +1,5 @@
-import { Button } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Button } from '@mui/material';
 import clsx from 'clsx';
 
 // Hooks
@@ -11,6 +11,7 @@ import './TextButton.scss';
 type TextButtonProps = {
   children: string;
   classes?: string;
+  disabled?: boolean;
   size?: 'xtrasmall' | 'large' | 'xtralarge';
   onClick?: () => void;
 };
@@ -23,6 +24,7 @@ export const TextButton = (props: TextButtonProps) => {
     { fontSize: string; lineHeight: number | string } | undefined
   >(undefined);
 
+  // Set text size by prop
   useEffect(() => {
     if (props.size === 'xtrasmall') {
       setTextSize({
@@ -59,13 +61,14 @@ export const TextButton = (props: TextButtonProps) => {
   return (
     <Button
       color="inherit"
+      disabled={props.disabled}
       disableFocusRipple
       sx={{
         ...textSize,
         borderColor: 'transparent',
         borderStyle: 'solid',
         '&:hover': {
-          backgroundColor: 'inherit',
+          backgroundColor: 'transparent',
           borderColor: 'text.primary'
         }
       }}

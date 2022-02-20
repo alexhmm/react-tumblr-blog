@@ -18,7 +18,7 @@ export const usePosts = () => {
   ): Promise<PostsResponse> => {
     const params = {
       api_key: process.env.REACT_APP_API_KEY,
-      limit: limit ?? 20,
+      limit: limit ?? 10,
       offset,
       tag,
       type: 'photo'

@@ -19,7 +19,7 @@ export const useSharedStore = create<SharedState>((set) => ({
   menu: false,
   theme: localStorage.getItem('theme') || Theme.Light,
   subtitle: null,
-  title: process.env.REACT_APP_TITLE ? process.env.REACT_APP_TITLE : undefined,
+  title: process.env.REACT_APP_TITLE ?? undefined,
   setMenu: (menu: boolean) => set({ menu }),
   setSubtitle: (subtitle: Subtitle | null) => set({ subtitle }),
   setTitle: (title: string) => set({ title }),

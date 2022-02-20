@@ -1,22 +1,53 @@
 @import '../../../../shared/styles/styles.scss';
 
 .post {
-  max-height: 90vh;
-  max-width: 100%;
+  @include flex;
+  @include flex-col;
   @include mb(8);
+  @include transition-opacity;
+  @include z(10);
+  &-image {
+    max-height: 85vh;
+    max-width: 100%;
+  }
+  &-title {
+    @include ml(4);
+    @include mb(2);
+  }
 }
 
 @media (min-width: $md) {
   .post {
-    max-width: 90vw;
     @include mb(16);
-    @include shadow-sm;
+    &-image {
+      max-width: calc(100vw - 5rem);
+    }
+    &-title {
+      @include ml(0);
+    }
   }
 }
 
 @media (min-width: $lg) {
   .post {
+    &-image {
+      max-width: calc(100vw - 9rem);
+    }
+    &-title {
+      @include mb(4);
+    }
+  }
+}
+
+@media (min-width: $xl) {
+  .post {
     @include mb(32);
-    @include shadow-md;
+    &-image {
+      max-width: calc(100vw - 400px);
+    }
+    &-title {
+      @include mb(4);
+      // @include text-xl;
+    }
   }
 }

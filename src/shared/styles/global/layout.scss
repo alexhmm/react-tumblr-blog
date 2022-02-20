@@ -46,6 +46,10 @@
   overflow-y: auto !important;
 }
 
+@mixin bottom($size) {
+  bottom: $size * 0.25rem !important;
+}
+
 @mixin left($size) {
   left: $size * 0.25rem !important;
 }
