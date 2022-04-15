@@ -1,38 +1,38 @@
 @mixin border {
-  border-width: 1px !important;
+  border-width: 1px;
 }
 
 @mixin border($size) {
-  border-width: $size * 1px !important;
+  border-width: $size * 1px;
 }
 
 @mixin border-l {
-  border-left-width: 1px !important;
+  border-left-width: 1px;
 }
 
 @mixin border-b-solid($size) {
   border-bottom-style: solid;
-  border-bottom-width: $size * 1px !important;
+  border-bottom-width: $size * 1px;
 }
 
 @mixin border-r {
-  border-right-width: 1px !important;
+  border-right-width: 1px;
 }
 
 @mixin border-t {
-  border-top-width: 1px !important;
+  border-top-width: 1px;
 }
 
 @mixin border-transparent {
-  border-color: transparent !important;
+  border-color: transparent;
 }
 
 @mixin border-dotted {
-  border-style: dotted !important;
+  border-style: dotted;
 }
 
 @mixin rounded-none {
-  border-radius: 0px !important;
+  border-radius: 0px;
 }
 
 @mixin rounded {

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Box, ThemeProvider } from '@mui/material';
+import { Box, StyledEngineProvider, ThemeProvider } from '@mui/material';
 
 // Components
 import { Menu } from './shared/components/Menu/Menu';
@@ -16,7 +16,7 @@ import { AppRouter } from './shared/router/AppRouter';
 // Stores
 import {
   SharedState,
-  useSharedStore
+  useSharedStore,
 } from './shared/stores/use-shared-store.hook';
 
 // Styles
@@ -39,15 +39,17 @@ function App() {
   }, [theme]);
 
   return (
-    <ThemeProvider theme={themeGet()}>
-      <Box bgcolor="background.default" color="text.primary" className="app">
-        <BrowserRouter>
-          <Title />
-          <Menu />
-          <AppRouter />
-        </BrowserRouter>
-      </Box>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={themeGet()}>
+        <Box bgcolor="background.default" color="text.primary" className="app">
+          <BrowserRouter>
+            <Title />
+            <Menu />
+            <AppRouter />
+          </BrowserRouter>
+        </Box>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

@@ -1,73 +1,73 @@
 @mixin absolute {
-  position: absolute !important;
+  position: absolute;
 }
 
 @mixin fixed {
-  position: fixed !important;
+  position: fixed;
 }
 
 @mixin relative {
-  position: relative !important;
+  position: relative;
 }
 
 @mixin sticky {
-  position: sticky !important;
+  position: sticky;
 }
 
 @mixin block {
-  display: block !important;
+  display: block;
 }
 
 @mixin box-border {
-  box-sizing: border-box !important;
+  box-sizing: border-box;
 }
 
 @mixin box-content {
-  box-sizing: content-box !important;
+  box-sizing: content-box;
 }
 
 @mixin hidden {
-  display: none !important;
+  display: none;
 }
 
 @mixin object-cover {
-  object-fit: cover !important;
+  object-fit: cover;
 }
 
 @mixin overflow-auto {
-  overflow: auto !important;
+  overflow: auto;
 }
 
 @mixin overflow-hidden {
-  overflow: hidden !important;
+  overflow: hidden;
 }
 
 @mixin overflow-y-auto {
-  overflow-y: auto !important;
+  overflow-y: auto;
 }
 
 @mixin bottom($size) {
-  bottom: $size * 0.25rem !important;
+  bottom: $size * 0.25rem;
 }
 
 @mixin left($size) {
-  left: $size * 0.25rem !important;
+  left: $size * 0.25rem;
 }
 
 @mixin left-1\/2 {
-  left: 50% !important;
+  left: 50%;
 }
 
 @mixin right($size) {
-  right: $size * 0.25rem !important;
+  right: $size * 0.25rem;
 }
 
 @mixin top($size) {
-  top: $size * 0.25rem !important;
+  top: $size * 0.25rem;
 }
 
 @mixin top-1\/2 {
-  top: 50% !important;
+  top: 50%;
 }
 
 @mixin z($index) {

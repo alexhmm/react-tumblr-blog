@@ -1,5 +1,5 @@
 @mixin min-h-screen {
-  min-height: 100vh !important;
+  min-height: 100vh;
 }
 
 @mixin h-auto {
@@ -7,39 +7,39 @@
 }
 
 @mixin h-full {
-  height: 100% !important;
+  height: 100%;
 }
 
 @mixin h-screen {
-  height: 100vh !important;
+  height: 100vh;
 }
 
 @mixin w-2\/3 {
-  width: 66.6666% !important;
+  width: 66.6666%;
 }
 
 @mixin w-3\/4 {
-  width: 75% !important;
+  width: 75%;
 }
 
 @mixin w-3\/5 {
-  width: 60% !important;
+  width: 60%;
 }
 
 @mixin w-4\/5 {
-  width: 80% !important;
+  width: 80%;
 }
 
 @mixin w-5\/6 {
-  width: 83.3333% !important;
+  width: 83.3333%;
 }
 
 @mixin h($size) {
-  height: $size * 0.25rem !important;
+  height: $size * 0.25rem;
 }
 
 @mixin min-h($size) {
-  min-height: $size * 0.25rem !important;
+  min-height: $size * 0.25rem;
 }
 
 @mixin min-h-screen {
@@ -47,25 +47,25 @@
 }
 
 @mixin w($size) {
-  width: $size * 0.25rem !important;
+  width: $size * 0.25rem;
 }
 
 @mixin min-w($size) {
-  min-width: $size * 0.25rem !important;
+  min-width: $size * 0.25rem;
 }
 
 @mixin max-w($size) {
-  max-width: $size * 0.25rem !important;
+  max-width: $size * 0.25rem;
 }
 
 @mixin max-w-full {
-  max-width: 100% !important;
+  max-width: 100%;
 }
 
 @mixin w-fit {
-  width: fit-content !important;
+  width: fit-content;
 }
 
 @mixin w-full {
-  width: 100% !important;
+  width: 100%;
 }
