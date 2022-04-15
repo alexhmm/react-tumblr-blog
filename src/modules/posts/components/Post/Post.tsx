@@ -8,7 +8,7 @@ import { useBreakpoints } from '../../../../shared/hooks/use-breakpoints.hook';
 import { Post as IPost } from '../../models/posts.types';
 
 // Styles
-import './Post.scss';
+import styles from './Post.module.scss';
 
 type PostProps = {
   post: IPost;
@@ -29,17 +29,19 @@ export const Post = (props: PostProps) => {
 
   return (
     <Box
-      className="post"
+      className={styles['post']}
       sx={{
-        opacity: loaded ? 1 : 0
+        opacity: loaded ? 1 : 0,
       }}
     >
-      <Box className="post-title">{props.post.summary.toUpperCase()}</Box>
+      <div className={styles['post-title']}>
+        {props.post.summary.toUpperCase()}
+      </div>
       <img
         alt={props.post.caption}
         src={src}
         onLoad={() => setLoaded(true)}
-        className="post-image"
+        className={styles['post-image']}
       />
     </Box>
   );

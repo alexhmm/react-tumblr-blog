@@ -1,3 +1,11 @@
-@mixin translateY($size) {
+@mixin -translate-x-1\/2 {
+  transform: translateX(-50%);
+}
+
+@mixin translate-y($size) {
   transform: translateY($size * 1px);
+}
+
+@mixin -translate-y-1\/2 {
+  transform: translateY(-50%);
 }

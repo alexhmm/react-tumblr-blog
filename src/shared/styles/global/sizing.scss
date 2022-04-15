@@ -58,6 +58,10 @@
   max-width: $size * 0.25rem !important;
 }
 
+@mixin max-w-full {
+  max-width: 100% !important;
+}
+
 @mixin w-fit {
   width: fit-content !important;
 }

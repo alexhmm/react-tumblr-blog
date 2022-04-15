@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import { Icon } from '../Icon/Icon';
 
 // Styles
-import './IconButton.scss';
+import styles from './IconButton.module.scss';
 
 type IconButtonProps = {
   children?: ReactNode;
@@ -15,6 +15,7 @@ type IconButtonProps = {
   disabled?: boolean;
   icon: [IconPrefix, IconName];
   iconSize?: 'small' | 'medium' | 'large';
+  padding?: string;
   onClick?: (event?: any) => void;
 };
 
@@ -29,14 +30,20 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     return (
       <Button
         {...rest}
+        className={clsx(styles['icon-button'], classes && classes)}
         color="inherit"
         disabled={disabled && disabled}
         ref={ref}
         onClick={props.onClick && props.onClick}
-        className={clsx('icon-button', classes && classes)}
+        sx={{
+          padding: props.padding ?? '0.5rem',
+        }}
       >
         <Icon
-          classes={clsx('icon-button-icon', disabled && 'icon-button-disabled')}
+          classes={clsx(
+            styles['icon-button-icon'],
+            disabled && styles['icon-button-disabled']
+          )}
           icon={icon}
           size={iconSize ?? 'small'}
           sx={{ color: 'text.primary' }}

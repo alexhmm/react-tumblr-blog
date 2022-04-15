@@ -14,11 +14,12 @@ import { usePosts } from '../../hooks/use-posts.hook';
 import { PostsState, usePostsStore } from '../../stores/use-posts.store';
 import {
   SharedState,
-  useSharedStore
+  useSharedStore,
 } from '../../../../shared/stores/use-shared-store.hook';
 
 // Styles
-import './Posts.scss';
+import styles from './Posts.module.scss';
+import clsx from 'clsx';
 
 export const Posts = () => {
   const { tagged } = useParams();
@@ -36,7 +37,7 @@ export const Posts = () => {
     setPost,
     setPostElements,
     setPosts,
-    setTag
+    setTag,
   ] = usePostsStore((state: PostsState) => [
     state.limit,
     state.loading,
@@ -48,12 +49,12 @@ export const Posts = () => {
     state.setPost,
     state.setPostElements,
     state.setPosts,
-    state.setTag
+    state.setTag,
   ]);
 
   // Settings store state
   const [setSubtitle] = useSharedStore((state: SharedState) => [
-    state.setSubtitle
+    state.setSubtitle,
   ]);
 
   // Reset post (detail)
@@ -173,14 +174,17 @@ export const Posts = () => {
       loader={null}
       next={onAddPosts}
       scrollThreshold={1}
-      className="posts"
+      className={styles['posts']}
     >
       {postElements[tagged ?? '/']}
-      <Box sx={{ opacity: loading ? 0.5 : 0 }} className="posts-loading">
+      <Box
+        sx={{ opacity: loading ? 0.5 : 0 }}
+        className={styles['posts-loading']}
+      >
         <Loader />
       </Box>
       {!postElements[tagged ?? '/'] && tagged && !loading && (
-        <Box className="posts-info posts-info-empty">
+        <Box className={clsx(styles['posts-info'], styles['posts-info-empty'])}>
           No posts found: #{tagged}
         </Box>
       )}

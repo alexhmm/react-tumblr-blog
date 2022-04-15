@@ -19,11 +19,11 @@ import { Theme } from '../../models/theme.enum';
 // Stores
 import {
   SharedState,
-  useSharedStore
+  useSharedStore,
 } from '../../stores/use-shared-store.hook';
 
 // Styles
-import './Menu.scss';
+import styles from './Menu.module.scss';
 
 export const Menu = () => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export const Menu = () => {
       state.menu,
       state.theme,
       state.setMenu,
-      state.setTheme
+      state.setTheme,
     ]
   );
 
@@ -84,7 +84,7 @@ export const Menu = () => {
   return (
     <>
       <TextButton
-        classes="menu-button"
+        classes={styles['menu-button']}
         size="large"
         onClick={() => setMenu(true)}
       >
@@ -92,13 +92,14 @@ export const Menu = () => {
       </TextButton>
       <Drawer
         anchor="right"
+        className={styles['menu']}
         open={menu}
+        PaperProps={{ className: styles['menu-paper'] }}
         transitionDuration={350}
         onClose={onMenuClose}
-        className="menu"
       >
-        <Box className="menu-content">
-          <Box className="menu-content-header">
+        <Box className={styles['menu-content']}>
+          <Box className={styles['menu-content-header']}>
             <IconButton
               icon={['fas', theme === Theme.Light ? 'moon' : 'sun']}
               onClick={onThemeToggle}
@@ -108,10 +109,10 @@ export const Menu = () => {
               onClick={() => setMenu(false)}
             />
           </Box>
-          <Box className="menu-content-search">
+          <Box className={styles['menu-content-search']}>
             <IconButton icon={['fas', 'search']} onClick={onSearchSubmit} />
             <TextField
-              classes="menu-content-search-text-field"
+              classes={styles['menu-content-search-text-field']}
               placeholder="Search"
               reset
               onChange={onSearchChange}
@@ -120,29 +121,29 @@ export const Menu = () => {
           </Box>
           <Box
             sx={{
-              '& .menu-content-nav-item': {
-                borderColor: 'transparent'
+              '& a': {
+                borderColor: 'transparent',
               },
-              '& .menu-content-nav-item:hover': {
-                borderColor: 'text.primary'
-              }
+              '& a:hover': {
+                borderColor: 'text.primary',
+              },
             }}
-            className="menu-content-nav"
+            className={styles['menu-content-nav']}
           >
-            <Link to="/" className="menu-content-nav-item">
+            <Link to="/" className={styles['menu-content-nav-item']}>
               <TextButton size="xtralarge" onClick={onMenuClose}>
                 Home
               </TextButton>
             </Link>
-            <Link to="about" className="menu-content-nav-item">
+            <Link to="about" className={styles['menu-content-nav-item']}>
               <TextButton size="xtralarge" onClick={onMenuClose}>
                 About
               </TextButton>
             </Link>
           </Box>
         </Box>
-        <Box className="menu-footer">
-          <Box className="menu-footer-social-media">
+        <Box className={styles['menu-footer']}>
+          <Box className={styles['menu-footer-social-media']}>
             {menuExternalLinksGet().map(
               (link: MenuExternalLink, index: number) => (
                 <a
@@ -150,24 +151,24 @@ export const Menu = () => {
                   href={link.to}
                   rel="noreferrer"
                   target="_blank"
-                  className="menu-footer-social-media-item"
+                  className={styles['menu-footer-social-media-item']}
                 >
                   <IconTextButton icon={link.icon}>{link.title}</IconTextButton>
                 </a>
               )
             )}
           </Box>
-          <Box className="menu-footer-info">
+          <Box className={styles['menu-footer-info']}>
             {process.env.REACT_APP_COPYRIGHT ? (
-              <Box className="menu-footer-info-copyright">
+              <Box className={styles['menu-footer-info-copyright']}>
                 <Icon
-                  classes="menu-footer-info-copyright-icon"
+                  classes={styles['menu-footer-info-copyright-icon']}
                   icon={['far', 'copyright']}
                   sx={{ color: 'text.secondary' }}
                 />
                 <Box
                   sx={{ color: 'text.secondary' }}
-                  className="menu-footer-info-copyright-text"
+                  className={styles['menu-footer-info-copyright-text']}
                 >
                   {process.env.REACT_APP_COPYRIGHT}
                 </Box>
@@ -175,7 +176,7 @@ export const Menu = () => {
             ) : (
               <Box />
             )}
-            <Box className="menu-footer-info-privacy">
+            <Box className={styles['menu-footer-info-privacy']}>
               <a
                 href="https://www.tumblr.com/policy/de/impressum"
                 rel="noreferrer"

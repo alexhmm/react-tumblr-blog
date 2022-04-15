@@ -54,12 +54,20 @@
   left: $size * 0.25rem !important;
 }
 
+@mixin left-1\/2 {
+  left: 50% !important;
+}
+
 @mixin right($size) {
   right: $size * 0.25rem !important;
 }
 
 @mixin top($size) {
   top: $size * 0.25rem !important;
+}
+
+@mixin top-1\/2 {
+  top: 50% !important;
 }
 
 @mixin z($index) {

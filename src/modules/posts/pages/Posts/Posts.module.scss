@@ -8,9 +8,10 @@
   @include w-full;
   &-info {
     @include fixed;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    @include left-1\/2;
+    @include top-1\/2;
+    @include -translate-x-1\/2;
+    @include -translate-y-1\/2;
     &-empty {
       @include text-xl;
     }
@@ -22,8 +23,8 @@
   &-loading {
     @include bottom(4);
     @include fixed;
-    left: 50%;
-    transform: translateX(-50%);
+    @include left-1\/2;
+    @include -translate-x-1\/2;
     @include transition-opacity;
     @include z(20);
   }

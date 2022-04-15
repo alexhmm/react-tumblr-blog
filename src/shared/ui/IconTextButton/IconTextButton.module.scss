@@ -19,7 +19,7 @@
   .icon-text-button {
     &-text {
       @include border-b-solid(2);
-      @include translateY(1);
+      @include translate-y(1);
     }
   }
 }

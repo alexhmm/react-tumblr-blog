@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 
 // Styles
-import './About.scss';
+import styles from './About.module.scss';
 
 export const About = () => {
-  return <Box className="about">About Page</Box>;
+  return <Box className={styles['about']}>About Page</Box>;
 };

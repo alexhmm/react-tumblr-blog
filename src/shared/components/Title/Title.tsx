@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
+import clsx from 'clsx';
 
 // Components
 import { IconTextButton } from '../../ui/IconTextButton/IconTextButton';
@@ -8,11 +9,11 @@ import { IconTextButton } from '../../ui/IconTextButton/IconTextButton';
 // Stores
 import {
   SharedState,
-  useSharedStore
+  useSharedStore,
 } from '../../stores/use-shared-store.hook';
 
 // Styles
-import './Title.scss';
+import styles from './Title.module.scss';
 
 export const Title = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export const Title = () => {
   // Shared store state
   const [subtitle, title] = useSharedStore((state: SharedState) => [
     state.subtitle,
-    state.title
+    state.title,
   ]);
 
   // Set document title
@@ -48,7 +49,7 @@ export const Title = () => {
     <>
       {subtitle ? (
         <IconTextButton
-          classes="title"
+          classes={styles['title']}
           icon={['fas', 'chevron-left']}
           size="large"
           onClick={onNavigateBack}
@@ -56,7 +57,10 @@ export const Title = () => {
           {subtitle.text}
         </IconTextButton>
       ) : (
-        <Box sx={{ borderColor: 'transparent' }} className="title title-home">
+        <Box
+          sx={{ borderColor: 'transparent' }}
+          className={clsx(styles['title'], styles['title-home'])}
+        >
           {process.env.REACT_APP_TITLE ?? ''}
         </Box>
       )}

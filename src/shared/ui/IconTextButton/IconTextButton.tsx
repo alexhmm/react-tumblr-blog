@@ -10,7 +10,7 @@ import { Icon } from '../Icon/Icon';
 import { useBreakpoints } from '../../hooks/use-breakpoints.hook';
 
 // Styles
-import './IconTextButton.scss';
+import styles from './IconTextButton.module.scss';
 
 type IconTextButtonProps = {
   children: string;
@@ -33,41 +33,48 @@ export const IconTextButton = (props: IconTextButtonProps) => {
     if (props.size === 'large' && lgDown) {
       setTextSize({
         fontSize: '1.125rem',
-        lineHeight: '1.75rem'
+        lineHeight: '1.75rem',
       });
     } else if (props.size === 'large' && lgUp) {
       setTextSize({
         fontSize: '1.25rem',
-        lineHeight: '1.75rem'
+        lineHeight: '1.75rem',
       });
     } else {
       setTextSize({
         fontSize: '1rem',
-        lineHeight: '1.5rem'
+        lineHeight: '1.5rem',
       });
     }
   }, [props, lgDown, lgUp]);
 
   return (
     <Button
+      className={clsx(
+        styles['icon-text-button'],
+        props.classes && props.classes
+      )}
       color="inherit"
       disableFocusRipple
       sx={{
         '&:hover': {
-          backgroundColor: 'transparent'
+          backgroundColor: 'transparent',
         },
-        '&:hover .icon-text-button-text': {
-          borderColor: 'text.primary'
+        '&:hover #icon-text-button-text': {
+          borderColor: 'text.primary',
         },
-        '& .icon-text-button-text': {
-          borderColor: 'transparent'
-        }
+        '& #icon-text-button-text': {
+          borderColor: 'transparent',
+        },
       }}
       onClick={props.onClick && props.onClick}
-      className={clsx('icon-text-button', props.classes && props.classes)}
     >
       <Icon icon={props.icon} />
-      <Box sx={{ ...textSize }} className="icon-text-button-text">
+      <Box
+        className={styles['icon-text-button-text']}
+        sx={{ ...textSize }}
+        id="icon-text-button-text"
+      >
         {props.children}
       </Box>
     </Button>

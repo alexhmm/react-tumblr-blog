@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { IconButton } from '../IconButton/IconButton';
 
 // Styles
-import './TextField.scss';
+import styles from './TextField.module.scss';
 
 type TextFieldProps = {
   classes?: string;
@@ -34,11 +34,14 @@ export const TextField = (props: TextFieldProps) => {
   return (
     <Box
       sx={{
+        '& .MuiInput-root': {
+          width: '100%',
+        },
         '& .MuiInput-root:after': {
-          borderColor: 'text.primary'
-        }
+          borderColor: 'text.primary',
+        },
       }}
-      className={clsx('text-field', props.classes && props.classes)}
+      className={clsx(styles['text-field'], props.classes && props.classes)}
     >
       <Input
         endAdornment={
@@ -47,7 +50,7 @@ export const TextField = (props: TextFieldProps) => {
           value.length > 0 && (
             <InputAdornment position="end">
               <IconButton
-                classes="text-field-reset"
+                classes={styles['text-field-reset']}
                 icon={['fas', 'times']}
                 onClick={() => onValueChange('')}
               />

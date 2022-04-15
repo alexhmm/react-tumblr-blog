@@ -1,19 +1,19 @@
 @import '../../styles/styles.scss';
 
 .menu {
-  & .MuiDrawer-paper {
+  &-button {
+    @include fixed;
+    @include right(4);
+    @include top(4);
+    @include z(30);
+  }
+  &-paper {
     @include flex;
     @include flex-col;
     @include justify-between;
     @include box-border;
     @include p(2);
     @include w-5\/6;
-  }
-  &-button {
-    @include fixed;
-    @include right(4);
-    @include top(4);
-    @include z(30);
   }
 }
 
@@ -99,7 +99,7 @@
       @include right(8);
       @include top(8);
     }
-    & .MuiDrawer-paper {
+    &-paper {
       @include p(4);
       @include w(120);
     }
@@ -112,7 +112,7 @@
       @include right(16);
       @include top(12);
     }
-    & .MuiDrawer-paper {
+    &-paper {
       @include p(8);
     }
   }

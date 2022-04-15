@@ -8,7 +8,7 @@
   @include z(10);
   &-image {
     max-height: 85vh;
-    max-width: 100%;
+    @include max-w-full;
   }
   &-title {
     @include ml(4);

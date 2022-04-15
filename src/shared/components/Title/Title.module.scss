@@ -25,7 +25,7 @@
     &-home {
       @include border-b-solid(2);
       @include text-xl;
-      @include translateY(1);
+      @include translate-y(1);
     }
   }
 }

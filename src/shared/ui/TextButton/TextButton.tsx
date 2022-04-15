@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { useBreakpoints } from '../../hooks/use-breakpoints.hook';
 
 // Styles
-import './TextButton.scss';
+import styles from './TextButton.module.scss';
 
 type TextButtonProps = {
   children: string;
@@ -29,31 +29,31 @@ export const TextButton = (props: TextButtonProps) => {
     if (props.size === 'xtrasmall') {
       setTextSize({
         fontSize: '0.75rem',
-        lineHeight: '1rem'
+        lineHeight: '1rem',
       });
     }
     if (props.size === 'large' && lgDown) {
       setTextSize({
         fontSize: '1.125rem',
-        lineHeight: '1.75rem'
+        lineHeight: '1.75rem',
       });
     }
     if (props.size === 'large' && lgUp) {
       setTextSize({
         fontSize: '1.25rem',
-        lineHeight: '1.75rem'
+        lineHeight: '1.75rem',
       });
     }
     if (props.size === 'xtralarge' && lgDown) {
       setTextSize({
         fontSize: '1.125rem',
-        lineHeight: '1.75rem'
+        lineHeight: '1.75rem',
       });
     }
     if (props.size === 'xtralarge' && lgUp) {
       setTextSize({
         fontSize: '1.5rem',
-        lineHeight: '2rem'
+        lineHeight: '2rem',
       });
     }
   }, [props, lgDown, lgUp]);
@@ -69,11 +69,11 @@ export const TextButton = (props: TextButtonProps) => {
         borderStyle: 'solid',
         '&:hover': {
           backgroundColor: 'transparent',
-          borderColor: 'text.primary'
-        }
+          borderColor: 'text.primary',
+        },
       }}
       onClick={props.onClick && props.onClick}
-      className={clsx('text-button', props.classes && props.classes)}
+      className={clsx(styles['text-button'], props.classes && props.classes)}
     >
       {props.children}
     </Button>
