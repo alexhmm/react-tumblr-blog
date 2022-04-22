@@ -1,12 +1,6 @@
 @import '../../styles/styles.scss';
 
 .menu {
-  &-button {
-    @include fixed;
-    @include right(4);
-    @include top(4);
-    @include z(30);
-  }
   &-paper {
     @include flex;
     @include flex-col;
@@ -34,7 +28,7 @@
     &-item {
       @include tap-highlight-none;
       &:not(:last-of-type) {
-        @include mb(4);
+        @include mb(8);
       }
     }
   }
@@ -93,6 +87,60 @@
   }
 }
 
+.menu-xs {
+  @include fixed;
+  // @include flex;
+  @include flex-col;
+  @include h-screen;
+  @include hidden;
+  @include left(0);
+  @include opacity(0);
+  @include top(0);
+  @include transition-opacity;
+  @include w-screen;
+  @include z(40);
+  &-close {
+    @include fixed;
+    @include right(4);
+    @include top(4);
+  }
+  &-footer {
+    @include bottom(4);
+    @include fixed;
+    @include flex;
+    @include items-center;
+    @include justify-between;
+    @include right(4);
+    & a {
+      @include ml(4);
+    }
+  }
+  &-header {
+    @include flex;
+    @include fixed;
+    @include items-center;
+    @include right(4);
+    @include top(4);
+    @include z(30);
+    &-search {
+      @include mr(4);
+    }
+  }
+  &-nav {
+    @include fixed;
+    @include flex;
+    @include flex-col;
+    @include items-center;
+    @include top(32);
+    @include w-full;
+  }
+  &-theme {
+    @include fixed;
+    @include left(4);
+    @include top(4);
+  }
+}
+
 @media (min-width: $sm) {
   .menu {
     &-button {
@@ -102,6 +150,19 @@
     &-paper {
       @include p(4);
       @include w(120);
+    }
+  }
+
+  .menu-sm {
+    @include fixed;
+    @include flex;
+    @include h(9);
+    @include items-center;
+    @include right(8);
+    @include top(8);
+    @include z(30);
+    & > * {
+      @include ml(8);
     }
   }
 }
@@ -114,6 +175,17 @@
     }
     &-paper {
       @include p(8);
+    }
+  }
+
+  .menu-sm {
+    @include fixed;
+    @include h(9);
+    @include right(16);
+    @include top(12);
+    @include z(30);
+    & > * {
+      @include ml(16);
     }
   }
 

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Box, Drawer } from '@mui/material';
 
@@ -10,6 +10,7 @@ import { TextButton } from '../../ui/TextButton/TextButton';
 import { TextField } from '../../ui/TextField/TextField';
 
 // Hooks
+import { useBreakpoints } from '../../hooks/use-breakpoints.hook';
 import { useSharedUtils } from '../../hooks/use-shared-utils.hook';
 
 // Models
@@ -26,6 +27,7 @@ import {
 import styles from './Menu.module.scss';
 
 export const Menu = () => {
+  const { smDown } = useBreakpoints();
   const navigate = useNavigate();
   const { menuExternalLinksGet } = useSharedUtils();
 
@@ -42,6 +44,19 @@ export const Menu = () => {
     ]
   );
 
+  // Refs
+  const menuXsRef = useRef<HTMLDivElement | null>(null);
+
+  // ####### //
+  // EFFECTS //
+  // ####### //
+
+  // Close small devices menu on resize to bigger window width
+  useEffect(() => {
+    !smDown && onMenuXsClose();
+    // eslint-disable-next-line
+  }, [smDown]);
+
   /**
    * Handler to close menu.
    */
@@ -49,6 +64,36 @@ export const Menu = () => {
     setMenu(false);
     // eslint-disable-next-line
   }, []);
+
+  /**
+   * Handler to close xs menu.
+   */
+  const onMenuXsClose = useCallback(() => {
+    if (menuXsRef.current) {
+      menuXsRef.current.style.opacity = '0';
+    }
+    setTimeout(() => {
+      if (menuXsRef.current) {
+        menuXsRef.current.style.display = 'none';
+        document.body.style.overflow = 'initial';
+      }
+    }, 250);
+  }, [menuXsRef]);
+
+  /**
+   * Handler to open xs menu.
+   */
+  const onMenuXsOpen = useCallback(() => {
+    if (menuXsRef.current) {
+      document.body.style.overflow = 'hidden';
+      menuXsRef.current.style.display = 'flex';
+      setTimeout(() => {
+        if (menuXsRef.current) {
+          menuXsRef.current.style.opacity = '1';
+        }
+      }, 10);
+    }
+  }, [menuXsRef]);
 
   /**
    * Handler on search value change.
@@ -83,13 +128,79 @@ export const Menu = () => {
 
   return (
     <>
-      <TextButton
-        classes={styles['menu-button']}
-        size="large"
-        onClick={() => setMenu(true)}
-      >
-        Menu
-      </TextButton>
+      {smDown && (
+        <>
+          <div className={styles['menu-xs-header']}>
+            <IconButton
+              classes={styles['menu-xs-header-search']}
+              icon={['fas', 'search']}
+            />
+            <IconButton
+              classes={styles['menu-xs-header-bars']}
+              icon={['fas', 'bars']}
+              onClick={onMenuXsOpen}
+            />
+          </div>
+          <Box
+            className={styles['menu-xs']}
+            sx={{ backgroundColor: 'background.paper' }}
+            ref={menuXsRef}
+          >
+            <IconButton
+              classes={styles['menu-xs-close']}
+              icon={['fas', 'times']}
+              onClick={onMenuXsClose}
+            />
+            <div className={styles['menu-xs-nav']}>
+              <Link to="/" className={styles['menu-content-nav-item']}>
+                <TextButton size="xtralarge" onClick={onMenuXsClose}>
+                  Home
+                </TextButton>
+              </Link>
+              <Link to="about" className={styles['menu-content-nav-item']}>
+                <TextButton size="xtralarge" onClick={onMenuXsClose}>
+                  About
+                </TextButton>
+              </Link>
+            </div>
+            <IconButton
+              classes={styles['menu-xs-theme']}
+              icon={['fas', theme === Theme.Light ? 'moon' : 'sun']}
+              onClick={onThemeToggle}
+            />
+            <div className={styles['menu-xs-footer']}>
+              <a
+                href="https://www.tumblr.com/policy/de/impressum"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <TextButton size="xtrasmall">Imprint</TextButton>
+              </a>
+              <a
+                href="https://www.tumblr.com/privacy/de"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <TextButton size="xtrasmall">Privacy</TextButton>
+              </a>
+            </div>
+          </Box>
+        </>
+      )}
+      {!smDown && (
+        <div className={styles['menu-sm']}>
+          <Link to="about" className={styles['menu-sm-nav-item']}>
+            <TextButton size="large" onClick={onMenuClose}>
+              About
+            </TextButton>
+          </Link>
+          <IconButton icon={['fas', 'search']} />
+          <IconButton
+            icon={['fas', theme === Theme.Light ? 'moon' : 'sun']}
+            onClick={onThemeToggle}
+          />
+        </div>
+      )}
       <Drawer
         anchor="right"
         className={styles['menu']}

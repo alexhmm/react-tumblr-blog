@@ -8,9 +8,3 @@
   @include p(0);
   @include rounded-none;
 }
-
-@media (min-width: $lg) {
-  .text-button {
-    @include border-b-solid(2);
-  }
-}

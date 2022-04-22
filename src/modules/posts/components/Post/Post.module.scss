@@ -4,50 +4,56 @@
   @include flex;
   @include flex-col;
   @include mb(8);
+  @include relative;
   @include transition-opacity;
   @include z(10);
   &-image {
     max-height: 85vh;
     @include max-w-full;
   }
-  &-title {
-    @include ml(4);
-    @include mb(2);
+  &-overlay {
+    @include absolute;
+    @include h-full;
+    @include opacity(0);
+    @include transition-opacity;
+    @include w-full;
+    &-title {
+      @include absolute;
+      @include bottom(4);
+      @include p(2);
+      @include left(4);
+      @include max-w-1\/2;
+    }
   }
 }
 
 @media (min-width: $md) {
   .post {
-    @include mb(16);
     &-image {
       max-width: calc(100vw - 5rem);
-    }
-    &-title {
-      @include ml(0);
     }
   }
 }
 
 @media (min-width: $lg) {
   .post {
+    @include mb(16);
     &-image {
       max-width: calc(100vw - 9rem);
     }
-    &-title {
-      @include mb(4);
+    &-overlay {
+      &-title {
+        @include px(4);
+        @include py(3);
+      }
     }
   }
 }
 
 @media (min-width: $xl) {
   .post {
-    @include mb(32);
     &-image {
       max-width: calc(100vw - 400px);
-    }
-    &-title {
-      @include mb(4);
-      // @include text-xl;
     }
   }
 }

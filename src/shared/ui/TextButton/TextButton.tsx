@@ -12,7 +12,7 @@ type TextButtonProps = {
   children: string;
   classes?: string;
   disabled?: boolean;
-  size?: 'xtrasmall' | 'large' | 'xtralarge';
+  size?: 'xtrasmall' | 'small' | 'large' | 'xtralarge';
   onClick?: () => void;
 };
 
@@ -31,29 +31,25 @@ export const TextButton = (props: TextButtonProps) => {
         fontSize: '0.75rem',
         lineHeight: '1rem',
       });
-    }
-    if (props.size === 'large' && lgDown) {
+    } else if (props.size === 'small') {
+      setTextSize({
+        fontSize: '0.875rem',
+        lineHeight: '1.25rem',
+      });
+    } else if (props.size === 'large') {
       setTextSize({
         fontSize: '1.125rem',
-        lineHeight: '1.75rem',
+        lineHeight: '1.5rem',
       });
-    }
-    if (props.size === 'large' && lgUp) {
+    } else if (props.size === 'xtralarge') {
       setTextSize({
         fontSize: '1.25rem',
         lineHeight: '1.75rem',
       });
-    }
-    if (props.size === 'xtralarge' && lgDown) {
+    } else {
       setTextSize({
-        fontSize: '1.125rem',
-        lineHeight: '1.75rem',
-      });
-    }
-    if (props.size === 'xtralarge' && lgUp) {
-      setTextSize({
-        fontSize: '1.5rem',
-        lineHeight: '2rem',
+        fontSize: '1rem',
+        lineHeight: '1.5rem',
       });
     }
   }, [props, lgDown, lgUp]);

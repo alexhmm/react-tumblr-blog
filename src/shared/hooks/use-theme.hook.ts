@@ -26,38 +26,38 @@ const breakpoints = {
     lg: 1024,
     xl: 1280,
     xxl: 1536,
-    xxxl: 1920
-  }
+    xxxl: 1920,
+  },
 };
 
-const typography = { fontFamily: "'Space Grotesk', sans-serif" };
+const typography = { fontFamily: "'Montserrat', sans-serif" };
 
 export const themeDark = createTheme({
   breakpoints,
   palette: {
     background: {
-      default: '#1f1f1f'
+      default: '#1f1f1f',
     },
     bg: {
-      card: '#2b2b2b'
+      card: '#2b2b2b',
     },
-    mode: 'dark'
+    mode: 'dark',
   },
-  typography
+  typography,
 });
 
 export const themeLight = createTheme({
   breakpoints,
   palette: {
     background: {
-      default: '#fafafa'
+      default: '#fafafa',
     },
     bg: {
-      card: '#f3f6f9'
+      card: '#f3f6f9',
     },
-    mode: 'light'
+    mode: 'light',
   },
-  typography
+  typography,
 });
 
 export const useTheme = () => {
@@ -78,6 +78,6 @@ export const useTheme = () => {
   };
 
   return {
-    themeGet
+    themeGet,
   };
 };

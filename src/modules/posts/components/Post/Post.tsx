@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
 
 // Hooks
@@ -31,12 +32,27 @@ export const Post = (props: PostProps) => {
     <Box
       className={styles['post']}
       sx={{
+        ':hover #post-overlay': {
+          opacity: 1,
+        },
         opacity: loaded ? 1 : 0,
       }}
     >
-      <div className={styles['post-title']}>
-        {props.post.summary.toUpperCase()}
-      </div>
+      <Link
+        to={`/post/${props.post.id_string}`}
+        className={styles['post-overlay']}
+        id="post-overlay"
+      >
+        <Box
+          className={styles['post-overlay-title']}
+          sx={{
+            backgroundColor: 'background.default',
+            color: 'text.primary',
+          }}
+        >
+          {props.post.summary.toUpperCase()}
+        </Box>
+      </Link>
       <img
         alt={props.post.caption}
         src={src}

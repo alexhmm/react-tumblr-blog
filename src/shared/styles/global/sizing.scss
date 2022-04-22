@@ -18,6 +18,10 @@
   width: 66.6666%;
 }
 
+@mixin w-1\/2 {
+  width: 50%;
+}
+
 @mixin w-3\/4 {
   width: 75%;
 }
@@ -58,6 +62,10 @@
   max-width: $size * 0.25rem;
 }
 
+@mixin max-w-1\/2 {
+  max-width: 50%;
+}
+
 @mixin max-w-full {
   max-width: 100%;
 }
@@ -68,4 +76,8 @@
 
 @mixin w-full {
   width: 100%;
+}
+
+@mixin w-screen {
+  width: 100vw;
 }
