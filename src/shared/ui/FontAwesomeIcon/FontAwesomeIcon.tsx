@@ -6,7 +6,7 @@ import {
   IconDefinition,
   IconLookup,
   IconName,
-  IconPrefix
+  IconPrefix,
 } from '@fortawesome/fontawesome-svg-core';
 import PropTypes from 'prop-types';
 
@@ -29,7 +29,7 @@ type IconProps = {
   sx?: SxProps<Theme> | undefined;
 };
 
-export const Icon = forwardRef(
+export const FontAwesomeIcon = forwardRef(
   (
     props: IconProps,
     ref:
@@ -40,11 +40,11 @@ export const Icon = forwardRef(
   ) => {
     const iconLookup: IconLookup = {
       prefix: props.icon[0],
-      iconName: props.icon[1]
+      iconName: props.icon[1],
     };
     const icon: IconDefinition = findIconDefinition(iconLookup);
     const {
-      icon: [width, height, , , svgPathData]
+      icon: [width, height, , , svgPathData],
     } = icon;
 
     return (
@@ -79,6 +79,6 @@ export const Icon = forwardRef(
   }
 );
 
-Icon.propTypes = {
-  icon: PropTypes.any.isRequired
+FontAwesomeIcon.propTypes = {
+  icon: PropTypes.any.isRequired,
 };

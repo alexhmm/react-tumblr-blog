@@ -4,7 +4,7 @@ import { Box, Button } from '@mui/material';
 import clsx from 'clsx';
 
 // Components
-import { Icon } from '../Icon/Icon';
+import { FontAwesomeIcon } from '../FontAwesomeIcon/FontAwesomeIcon';
 
 // Hooks
 import { useBreakpoints } from '../../hooks/use-breakpoints.hook';
@@ -69,7 +69,7 @@ export const IconTextButton = (props: IconTextButtonProps) => {
       }}
       onClick={props.onClick && props.onClick}
     >
-      <Icon icon={props.icon} />
+      <FontAwesomeIcon icon={props.icon} />
       <Box
         className={styles['icon-text-button-text']}
         sx={{ ...textSize }}

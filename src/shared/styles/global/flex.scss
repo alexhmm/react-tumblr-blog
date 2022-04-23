@@ -60,6 +60,14 @@
   justify-content: flex-start;
 }
 
+@mixin self-end {
+  align-self: flex-end;
+}
+
+@mixin self-center {
+  align-self: center;
+}
+
 @mixin shrink {
   flex-shrink: 1;
 }

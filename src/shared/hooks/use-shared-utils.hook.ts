@@ -53,27 +53,27 @@ export const useSharedUtils = () => {
           src:
             process.env.REACT_APP_META_FAVICON64 &&
             process.env.REACT_APP_META_FAVICON64,
-          type: 'image/png'
+          type: 'image/png',
         },
         {
           sizes: '192x192',
           src:
             process.env.REACT_APP_META_FAVICON192 &&
             process.env.REACT_APP_META_FAVICON192,
-          type: 'image/png'
+          type: 'image/png',
         },
         {
           sizes: '512x512',
           src:
             process.env.REACT_APP_META_FAVICON512 &&
             process.env.REACT_APP_META_FAVICON512,
-          type: 'image/png'
-        }
+          type: 'image/png',
+        },
       ],
       name: process.env.REACT_APP_TITLE && process.env.REACT_APP_TITLE,
       short_name: process.env.REACT_APP_TITLE && process.env.REACT_APP_TITLE,
       start_url,
-      theme_color: theme === Theme.Light ? '#fafafa' : '#1f1f1f'
+      theme_color: theme === Theme.Light ? '#fafafa' : '#1f1f1f',
     };
 
     const manifestStr = JSON.stringify(manifestObj);
@@ -94,50 +94,43 @@ export const useSharedUtils = () => {
     if (process.env.REACT_APP_SOCIAL_FACEBOOK) {
       externalLinks.push({
         icon: ['fab', 'facebook'],
-        title: 'Facebook',
-        to: `https://www.facebook.com/${process.env.REACT_APP_SOCIAL_FACEBOOK}`
+        title: process.env.REACT_APP_SOCIAL_FACEBOOK,
+        to: `https://www.facebook.com/${process.env.REACT_APP_SOCIAL_FACEBOOK}`,
       });
     }
     if (process.env.REACT_APP_SOCIAL_GITHUB) {
       externalLinks.push({
         icon: ['fab', 'github'],
-        title: 'Github',
-        to: `https://www.facebook.com/${process.env.REACT_APP_SOCIAL_GITHUB}`
+        title: process.env.REACT_APP_SOCIAL_GITHUB,
+        to: `https://www.github.com/${process.env.REACT_APP_SOCIAL_GITHUB}`,
       });
     }
     if (process.env.REACT_APP_SOCIAL_INSTAGRAM) {
       externalLinks.push({
         icon: ['fab', 'instagram'],
-        title: 'Instagram',
-        to: `https://instagram.com/${process.env.REACT_APP_SOCIAL_INSTAGRAM}`
-      });
-    }
-    if (process.env.REACT_APP_SOCIAL_SNAPCHAT) {
-      externalLinks.push({
-        icon: ['fab', 'snapchat'],
-        title: 'Snapchat',
-        to: `https://story.snapchat.com/s/${process.env.REACT_APP_SOCIAL_SNAPCHAT}`
+        title: process.env.REACT_APP_SOCIAL_INSTAGRAM,
+        to: `https://instagram.com/${process.env.REACT_APP_SOCIAL_INSTAGRAM}`,
       });
     }
     if (process.env.REACT_APP_SOCIAL_TIKTOK) {
       externalLinks.push({
         icon: ['fab', 'tiktok'],
-        title: 'TikTok',
-        to: `https://www.tiktok.com/@${process.env.REACT_APP_SOCIAL_TIKTOK}`
+        title: process.env.REACT_APP_SOCIAL_TIKTOK,
+        to: `https://www.tiktok.com/@${process.env.REACT_APP_SOCIAL_TIKTOK}`,
       });
     }
     if (process.env.REACT_APP_SOCIAL_TWITCH) {
       externalLinks.push({
         icon: ['fab', 'twitch'],
-        title: 'Twitch',
-        to: `https://www.twitch.tv/${process.env.REACT_APP_SOCIAL_TWITCH}`
+        title: process.env.REACT_APP_SOCIAL_TWITCH,
+        to: `https://www.twitch.tv/${process.env.REACT_APP_SOCIAL_TWITCH}`,
       });
     }
     if (process.env.REACT_APP_SOCIAL_TWITTER) {
       externalLinks.push({
         icon: ['fab', 'twitter'],
-        title: 'Twitter',
-        to: `https://twitter.com/${process.env.REACT_APP_SOCIAL_TWITTER}`
+        title: process.env.REACT_APP_SOCIAL_TWITTER,
+        to: `https://twitter.com/${process.env.REACT_APP_SOCIAL_TWITTER}`,
       });
     }
     return externalLinks;
@@ -145,6 +138,6 @@ export const useSharedUtils = () => {
 
   return {
     appMetaDataSet,
-    menuExternalLinksGet
+    menuExternalLinksGet,
   };
 };

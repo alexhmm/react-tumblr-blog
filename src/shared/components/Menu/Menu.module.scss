@@ -1,206 +1,144 @@
 @import '../../styles/styles.scss';
 
 .menu {
-  &-paper {
-    @include flex;
-    @include flex-col;
-    @include justify-between;
-    @include box-border;
-    @include p(2);
-    @include w-5\/6;
+  @include fixed;
+  @include h-screen;
+  @include hidden;
+  @include left(0);
+  @include top(0);
+  @include w-screen;
+  @include z(30);
+}
+
+.menu-backdrop {
+  @include hidden;
+  @include opacity(0);
+  @include transition-opacity;
+}
+
+.menu-buttons {
+  @include flex;
+  @include fixed;
+  @include h(9);
+  @include items-center;
+  @include right(4);
+  @include top(4);
+  @include z(20);
+  & > * {
+    @include ml(4);
   }
 }
 
 .menu-content {
-  @include flex;
+  @include box-border;
+  @include fixed;
   @include flex-col;
-  &-header {
-    @include flex;
-    @include items-center;
-    @include justify-between;
-    @include mb(8);
-  }
-  &-nav {
+  @include h-screen;
+  @include hidden;
+  @include justify-between;
+  @include p(4);
+  @include opacity(0);
+  @include overflow-y-auto;
+  @include right(0);
+  @include top(0);
+  @include transition-opacity;
+  @include w-screen;
+  @include z(40);
+  &-bottom {
     @include flex;
     @include flex-col;
-    @include items-center;
-    @include my(16);
-    &-item {
-      @include tap-highlight-none;
-      &:not(:last-of-type) {
-        @include mb(8);
-      }
-    }
   }
-  &-search {
+  &-top {
     @include flex;
-    @include items-center;
-    &-icon {
-      @include w(5);
-      @include m(2);
-    }
-    &-text-field {
-      @include ml(2);
-    }
-    & .MuiInputAdornment-positionEnd {
-      @include mr(1);
+    @include flex-col;
+  }
+}
+
+.menu-content-bottom-footer {
+  @include self-end;
+  & a {
+    @include ml(4);
+  }
+}
+
+.menu-content-bottom-social-media {
+  @include flex;
+  @include flex-wrap;
+  @include justify-center;
+  @include my(8);
+  @include px(4);
+  &-item {
+    @include mb(1);
+    @include mx(2);
+  }
+}
+
+.menu-content-top-close {
+  @include self-end;
+}
+
+.menu-content-top-nav {
+  @include flex;
+  @include flex-col;
+  @include items-center;
+  @include my(8);
+  &-item {
+    @include tap-highlight-none;
+    &:not(:last-of-type) {
+      @include mb(8);
     }
   }
 }
 
-.menu-footer {
-  @include flex;
-  @include flex-col;
-  &-info {
-    @include flex;
-    @include items-center;
-    @include justify-between;
-    &-copyright {
-      @include flex;
-      @include items-center;
-      &-icon {
-        @include w(3);
-      }
-      &-text {
-        @include ml(2);
-        @include text-xs;
-      }
-    }
-    &-privacy {
-      @include text-xs;
-      & a {
-        &:first-of-type {
-          @include mr(4);
-        }
-      }
-    }
+@media (min-width: $sm) {
+  .menu-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    @include absolute;
+    @include block;
+    @include h-screen;
+    @include left(0);
+    @include top(0);
+    width: calc(100% - 480px);
   }
-  &-social-media {
+
+  .menu-buttons {
+    @include right(8);
+    @include top(8);
+  }
+
+  .menu-content {
+    box-shadow: -5px 0px 5px 0px rgb(0 0 0 / 0.05),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    @include w(120);
+    @include p(8);
+  }
+
+  .menu-content-bottom-social-media {
     @include flex;
     @include flex-wrap;
     @include justify-center;
-    @include mb(8);
+    @include my(8);
     &-item {
       @include mb(1);
       @include mx(2);
     }
   }
-}
 
-.menu-xs {
-  @include fixed;
-  // @include flex;
-  @include flex-col;
-  @include h-screen;
-  @include hidden;
-  @include left(0);
-  @include opacity(0);
-  @include top(0);
-  @include transition-opacity;
-  @include w-screen;
-  @include z(40);
-  &-close {
-    @include fixed;
-    @include right(4);
-    @include top(4);
-  }
-  &-footer {
-    @include bottom(4);
-    @include fixed;
-    @include flex;
-    @include items-center;
-    @include justify-between;
-    @include right(4);
-    & a {
-      @include ml(4);
-    }
-  }
-  &-header {
-    @include flex;
-    @include fixed;
-    @include items-center;
-    @include right(4);
-    @include top(4);
-    @include z(30);
-    &-search {
-      @include mr(4);
-    }
-  }
-  &-nav {
-    @include fixed;
-    @include flex;
-    @include flex-col;
-    @include items-center;
-    @include top(32);
-    @include w-full;
-  }
-  &-theme {
-    @include fixed;
-    @include left(4);
-    @include top(4);
-  }
-}
-
-@media (min-width: $sm) {
-  .menu {
-    &-button {
-      @include right(8);
-      @include top(8);
-    }
-    &-paper {
-      @include p(4);
-      @include w(120);
-    }
-  }
-
-  .menu-sm {
-    @include fixed;
-    @include flex;
-    @include h(9);
-    @include items-center;
-    @include right(8);
-    @include top(8);
-    @include z(30);
-    & > * {
-      @include ml(8);
-    }
+  .menu-content-top-nav {
+    @include my(24);
   }
 }
 
 @media (min-width: $lg) {
-  .menu {
-    &-button {
-      @include right(16);
-      @include top(12);
-    }
-    &-paper {
-      @include p(8);
-    }
-  }
-
-  .menu-sm {
-    @include fixed;
-    @include h(9);
+  .menu-buttons {
     @include right(16);
     @include top(12);
-    @include z(30);
     & > * {
-      @include ml(16);
+      @include ml(8);
     }
   }
 
-  .menu-content {
-    &-header {
-      @include mb(12);
-    }
-    &-nav {
-      @include my(24);
-    }
-  }
-
-  .menu-footer {
-    &-social-media {
-      @include mb(12);
-    }
+  .menu-content-top-nav {
+    @include my(32);
   }
 }

@@ -4,7 +4,7 @@ import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
 import clsx from 'clsx';
 
 // Components
-import { Icon } from '../Icon/Icon';
+import { FontAwesomeIcon } from '../FontAwesomeIcon/FontAwesomeIcon';
 
 // Styles
 import styles from './IconButton.module.scss';
@@ -39,7 +39,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
           padding: props.padding ?? '0.5rem',
         }}
       >
-        <Icon
+        <FontAwesomeIcon
           classes={clsx(
             styles['icon-button-icon'],
             disabled && styles['icon-button-disabled']
