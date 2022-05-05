@@ -6,7 +6,6 @@
   @include h(9);
   @include items-center;
   @include left(4);
-  letter-spacing: 0.1em;
   @include top(4);
   @include uppercase;
   @include z(30);
@@ -26,7 +25,6 @@
 @media (min-width: $lg) {
   .title {
     @include left(16);
-    letter-spacing: 0.2em;
     @include top(12);
     &-home {
       @include border-b-solid(2);

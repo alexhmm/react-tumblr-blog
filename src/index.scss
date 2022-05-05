@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
 
+@import './shared/styles/styles.scss';
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -28,4 +30,28 @@ a {
 
 iframe {
   display: none;
+}
+
+// Global classes
+.page-content {
+  @include box-border;
+  @include pb(8);
+  @include pt(17);
+  @include px(4);
+  @include w-full;
+}
+
+@media (min-width: $sm) {
+  .page-content {
+    @include pb(16);
+    @include pt(24);
+    @include px(8);
+  }
+}
+
+@media (min-width: $lg) {
+  .page-content {
+    @include pt(32);
+    @include px(16);
+  }
 }

@@ -9,7 +9,7 @@ export interface MenuExternalLink extends MenuLink {
   icon: [IconPrefix, IconName];
 }
 
-export interface Subtitle {
+export interface PageTitle {
   document: string;
   text: string;
 }

@@ -4,9 +4,6 @@
   @include flex;
   @include flex-col;
   @include items-center;
-  @include pb(8);
-  @include pt(17);
-  @include w-full;
   &-info {
     @include fixed;
     @include left-1\/2;
@@ -28,13 +25,6 @@
     @include -translate-x-1\/2;
     @include transition-opacity;
     @include z(20);
-  }
-}
-
-@media (min-width: $sm) {
-  .posts {
-    @include pb(16);
-    @include pt(24);
   }
 }
 

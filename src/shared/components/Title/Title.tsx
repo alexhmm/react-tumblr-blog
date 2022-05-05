@@ -6,6 +6,9 @@ import clsx from 'clsx';
 // Components
 import { IconTextButton } from '../../ui/IconTextButton/IconTextButton';
 
+// Hooks
+import { useBreakpoints } from '../../hooks/use-breakpoints.hook';
+
 // Stores
 import {
   SharedState,
@@ -16,11 +19,12 @@ import {
 import styles from './Title.module.scss';
 
 export const Title = () => {
+  const { lgDown } = useBreakpoints();
   const navigate = useNavigate();
 
   // Shared store state
-  const [subtitle, title] = useSharedStore((state: SharedState) => [
-    state.subtitle,
+  const [pageTitle, title] = useSharedStore((state: SharedState) => [
+    state.pageTitle,
     state.title,
   ]);
 
@@ -28,14 +32,14 @@ export const Title = () => {
   useEffect(() => {
     if (title) {
       document.title = title
-        ? subtitle?.document
-          ? `${title} •  ${subtitle.document}`
+        ? pageTitle?.document
+          ? `${title} •  ${pageTitle.document}`
           : title
         : '';
     }
 
     // eslint-disable-next-line
-  }, [title, subtitle]);
+  }, [title, pageTitle]);
 
   /**
    * Handler to navigate back.
@@ -47,19 +51,22 @@ export const Title = () => {
 
   return (
     <>
-      {subtitle ? (
+      {pageTitle ? (
         <IconTextButton
           classes={styles['title']}
           icon={['fas', 'chevron-left']}
           size="large"
           onClick={onNavigateBack}
         >
-          {subtitle.text}
+          {pageTitle.text}
         </IconTextButton>
       ) : (
         <Box
-          sx={{ borderColor: 'transparent' }}
           className={clsx(styles['title'], styles['title-home'])}
+          sx={{
+            borderColor: 'transparent',
+            letterSpacing: pageTitle ? 0 : lgDown ? '0.1em' : '0.2em',
+          }}
         >
           {process.env.REACT_APP_TITLE ?? ''}
         </Box>

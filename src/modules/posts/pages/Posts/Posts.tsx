@@ -53,8 +53,8 @@ export const Posts = () => {
   ]);
 
   // Settings store state
-  const [setSubtitle] = useSharedStore((state: SharedState) => [
-    state.setSubtitle,
+  const [setPageTitle] = useSharedStore((state: SharedState) => [
+    state.setPageTitle,
   ]);
 
   // Reset post (detail)
@@ -139,8 +139,8 @@ export const Posts = () => {
     }
 
     // Set document title based on tag
-    !tagged && setSubtitle(null);
-    tagged && setSubtitle({ document: `#${tagged}`, text: `#${tagged}` });
+    !tagged && setPageTitle(null);
+    tagged && setPageTitle({ document: `#${tagged}`, text: `#${tagged}` });
     // eslint-disable-next-line
   }, [tagged]);
 
@@ -174,7 +174,7 @@ export const Posts = () => {
       loader={null}
       next={onAddPosts}
       scrollThreshold={1}
-      className={styles['posts']}
+      className={clsx(styles['posts'], 'page-content')}
     >
       {postElements[tagged ?? '/']}
       <Box
