@@ -2,20 +2,16 @@ import { Route, Routes } from 'react-router-dom';
 import { About } from '../../modules/info/pages/About/About';
 
 // Pages
+import { PostDetail } from '../../modules/posts/pages/PostDetail/PostDetail';
 import { Posts } from '../../modules/posts/pages/Posts/Posts';
 
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Posts />}>
-        {/* <Route path="post">
-          <Route path=":id" element={<Post />}></Route>
-        </Route> */}
-        <Route path="tagged">
-          <Route path=":tagged" element={<Posts />} />
-        </Route>
-      </Route>
+      <Route path="/" element={<Posts />} />
       <Route path="about" element={<About />} />
+      <Route path="post/:id" element={<PostDetail />} />
+      <Route path="tagged/:tagged" element={<Posts />} />
     </Routes>
   );
 };

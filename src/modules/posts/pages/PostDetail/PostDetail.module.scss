@@ -1,0 +1,61 @@
+@import '../../../../shared/styles/styles.scss';
+
+.post-detail {
+  @include relative;
+  @include transition-opacity;
+  &-container {
+    @include flex;
+    @include items-center;
+    @include justify-center;
+    @include h-screen;
+    @include w-screen;
+  }
+  &-image {
+    max-height: 85vh;
+    @include max-w-full;
+  }
+  &-overlay {
+    @include absolute;
+    height: calc(100% - 4px);
+    @include opacity(0);
+    @include transition-opacity;
+    @include w-full;
+    &-title {
+      @include absolute;
+      @include bottom(4);
+      @include p(2);
+      @include left(4);
+      @include max-w-1\/2;
+    }
+  }
+}
+
+@media (min-width: $md) {
+  .post-detail {
+    &-image {
+      max-width: calc(100vw - 5rem);
+    }
+  }
+}
+
+@media (min-width: $lg) {
+  .post-detail {
+    &-image {
+      max-width: calc(100vw - 9rem);
+    }
+    &-overlay {
+      &-title {
+        @include px(4);
+        @include py(3);
+      }
+    }
+  }
+}
+
+@media (min-width: $xl) {
+  .post-detail {
+    &-image {
+      max-width: calc(100vw - 400px);
+    }
+  }
+}
