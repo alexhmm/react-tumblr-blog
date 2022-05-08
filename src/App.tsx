@@ -4,6 +4,7 @@ import { Box, StyledEngineProvider, ThemeProvider } from '@mui/material';
 
 // Components
 import { Menu } from './shared/components/Menu/Menu';
+import { Search } from './shared/components/Search/Search';
 import { Title } from './shared/components/Title/Title';
 
 // Hooks
@@ -45,6 +46,7 @@ function App() {
           <BrowserRouter>
             <Title />
             <Menu />
+            <Search />
             <AppRouter />
           </BrowserRouter>
         </Box>

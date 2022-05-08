@@ -32,8 +32,9 @@ export const Menu = () => {
   // const [searchValue, setSearchValue] = useState<string>('');
 
   // User store state
-  const [theme, setTheme] = useSharedStore((state: SharedState) => [
+  const [theme, setSearch, setTheme] = useSharedStore((state: SharedState) => [
     state.theme,
+    state.setSearch,
     state.setTheme,
   ]);
 
@@ -41,10 +42,6 @@ export const Menu = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuBackdropRef = useRef<HTMLDivElement | null>(null);
   const menuContentRef = useRef<HTMLDivElement | null>(null);
-
-  // ####### //
-  // EFFECTS //
-  // ####### //
 
   /**
    * Handler to close menu.
@@ -96,29 +93,6 @@ export const Menu = () => {
     }
   }, [menuContentRef]);
 
-  // /**
-  //  * Handler on search value change.
-  //  */
-  // const onSearchChange = useCallback((value: string) => {
-  //   setSearchValue(value);
-  // }, []);
-
-  // /**
-  //  * Handler to submit search.
-  //  */
-  // const onSearchSubmit = useCallback(() => {
-  //   if (searchValue && searchValue.length > 1) {
-  //     let searchVal = searchValue;
-  //     if (searchVal.charAt(0) === '#') {
-  //       searchVal = searchVal.substring(1, searchVal.length);
-  //     }
-  //     onMenuClose();
-  //     setSearchValue('');
-  //     navigate('/tagged/' + searchVal.toLocaleLowerCase());
-  //   }
-  //   // eslint-disable-next-line
-  // }, [searchValue]);
-
   /**
    * Handler to toggle application theme.
    */
@@ -130,7 +104,7 @@ export const Menu = () => {
   return (
     <>
       <div className={styles['menu-buttons']}>
-        <HeroIconButton>
+        <HeroIconButton onClick={() => setSearch(true)}>
           <SearchIcon />
         </HeroIconButton>
         <HeroIconButton onClick={onThemeToggle}>

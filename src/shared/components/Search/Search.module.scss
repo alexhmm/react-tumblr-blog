@@ -1,0 +1,57 @@
+@import '../../../shared/styles/styles.scss';
+
+.search {
+  @include fixed;
+  @include h-screen;
+  @include hidden;
+  @include items-center;
+  @include justify-center;
+  @include left(0);
+  @include opacity(0);
+  @include p(4);
+  @include top(0);
+  @include transition-opacity;
+  @include w-screen;
+  @include z(40);
+  &-close {
+    @include flex;
+    @include fixed;
+    @include h(9);
+    @include items-center;
+    @include right(4);
+    @include top(4);
+    @include z(20);
+  }
+  &-text-field {
+    @include w-full;
+    @include py(1);
+    @include text-lg;
+    &-icon {
+      @include flex;
+      @include items-center;
+      @include justify-center;
+      @include p(1);
+    }
+  }
+}
+
+@media (min-width: $sm) {
+  .search {
+    &-close {
+      @include right(8);
+      @include top(8);
+    }
+    &-text-field {
+      @include w(120);
+    }
+  }
+}
+
+@media (min-width: $lg) {
+  .search {
+    &-text-field {
+      @include py(2);
+      @include text-xl;
+    }
+  }
+}

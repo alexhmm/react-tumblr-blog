@@ -49,7 +49,6 @@ export const PostDetail = () => {
   // Responsive image source
   useEffect(() => {
     if (post) {
-      console.log('post', post);
       setPageTitle({
         document: post.summary.toUpperCase(),
         text: post.summary.toUpperCase(),
