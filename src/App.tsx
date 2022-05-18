@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Box, StyledEngineProvider, ThemeProvider } from '@mui/material';
 
 // Components
+import { Backdrop } from './shared/components/Backdrop/Backdrop';
 import { Menu } from './shared/components/Menu/Menu';
 import { Search } from './shared/components/Search/Search';
 import { Title } from './shared/components/Title/Title';
@@ -44,6 +45,7 @@ function App() {
       <ThemeProvider theme={themeGet()}>
         <Box bgcolor="background.default" color="text.primary" className="app">
           <BrowserRouter>
+            <Backdrop />
             <Title />
             <Menu />
             <Search />

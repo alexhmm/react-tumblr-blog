@@ -6,14 +6,13 @@
   @include mb(8);
   @include relative;
   @include transition-opacity;
-  @include z(10);
   &-image {
     max-height: 85vh;
     @include max-w-full;
   }
   &-overlay {
     @include absolute;
-    @include h-full;
+    height: calc(100% - 4px);
     @include opacity(0);
     @include transition-opacity;
     @include w-full;

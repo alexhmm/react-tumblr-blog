@@ -1,0 +1,14 @@
+@import '../../../shared/styles/styles.scss';
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  @include fixed;
+  @include h-screen;
+  @include hidden;
+  @include left(0);
+  @include opacity(0);
+  @include top(0);
+  @include transition-opacity;
+  @include w-screen;
+  @include z(50);
+}

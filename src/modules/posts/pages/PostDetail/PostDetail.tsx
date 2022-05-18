@@ -2,6 +2,9 @@ import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+// Components
+import { Zoomable } from '../../../../shared/ui/Zoomable/Zoomtable';
+
 // Hooks
 import { useBreakpoints } from '../../../../shared/hooks/use-breakpoints.hook';
 import { usePosts } from '../../hooks/use-posts.hook';
@@ -28,10 +31,14 @@ export const PostDetail = () => {
   const [post, setPost] = useState<IPost | undefined>(undefined);
   const [src, setSrc] = useState<string>('');
 
-  // Settings store state
-  const [setPageTitle] = useSharedStore((state: SharedState) => [
-    state.setPageTitle,
-  ]);
+  // Shared store state
+  const [touchId, setPageTitle, setTouch] = useSharedStore(
+    (state: SharedState) => [
+      state.touchId,
+      state.setPageTitle,
+      state.setTouchId,
+    ]
+  );
 
   // Get post by id
   useEffect(() => {
@@ -70,28 +77,35 @@ export const PostDetail = () => {
                 opacity: 1,
               },
               opacity: loaded ? 1 : 0,
+              zIndex: touchId === post.id_string ? 50 : 10,
             }}
           >
-            <div
-              className={styles['post-detail-overlay']}
-              id="post-detail-overlay"
+            <Zoomable
+              releaseAnimationTimeout={250}
+              onTouchStart={() => setTouch(post.id_string)}
+              onTouchEnd={() => setTouch(undefined)}
             >
-              <Box
-                className={styles['post-detail-overlay-title']}
-                sx={{
-                  backgroundColor: 'background.default',
-                  color: 'text.primary',
-                }}
+              <div
+                className={styles['post-detail-overlay']}
+                id="post-detail-overlay"
               >
-                {post.summary.toUpperCase()}
-              </Box>
-            </div>
-            <img
-              alt={post.caption}
-              src={src}
-              onLoad={() => setLoaded(true)}
-              className={styles['post-detail-image']}
-            />
+                <Box
+                  className={styles['post-detail-overlay-title']}
+                  sx={{
+                    backgroundColor: 'background.default',
+                    color: 'text.primary',
+                  }}
+                >
+                  {post.summary.toUpperCase()}
+                </Box>
+              </div>
+              <img
+                alt={post.caption}
+                src={src}
+                onLoad={() => setLoaded(true)}
+                className={styles['post-detail-image']}
+              />
+            </Zoomable>
           </Box>
         </div>
       )}
