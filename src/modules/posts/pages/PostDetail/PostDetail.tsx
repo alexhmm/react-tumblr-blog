@@ -22,7 +22,7 @@ import {
 import styles from './PostDetail.module.scss';
 
 export const PostDetail = () => {
-  const { lgDown } = useBreakpoints();
+  const { lgDown, lgUp } = useBreakpoints();
   const { id } = useParams();
   const { postByIdGet } = usePosts();
 
@@ -60,8 +60,10 @@ export const PostDetail = () => {
         document: post.summary.toUpperCase(),
         text: post.summary.toUpperCase(),
       });
-      lgDown && setSrc(post.photos[0]?.alt_sizes[1].url);
-      !lgDown && setSrc(post.photos[0]?.alt_sizes[0].url);
+      if (lgDown || lgUp) {
+        lgDown && setSrc(post.photos[0]?.alt_sizes[1].url);
+        lgUp && setSrc(post.photos[0]?.alt_sizes[0].url);
+      }
     }
     // eslint-disable-next-line
   }, [post, lgDown]);

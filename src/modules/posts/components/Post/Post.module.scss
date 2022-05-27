@@ -26,33 +26,14 @@
   }
 }
 
-@media (min-width: $md) {
-  .post {
-    &-image {
-      max-width: calc(100vw - 5rem);
-    }
-  }
-}
-
 @media (min-width: $lg) {
   .post {
     @include mb(16);
-    &-image {
-      max-width: calc(100vw - 9rem);
-    }
     &-overlay {
       &-title {
         @include px(4);
         @include py(3);
       }
-    }
-  }
-}
-
-@media (min-width: $xl) {
-  .post {
-    &-image {
-      max-width: calc(100vw - 400px);
     }
   }
 }

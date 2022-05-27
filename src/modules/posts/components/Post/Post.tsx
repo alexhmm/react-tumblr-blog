@@ -25,7 +25,7 @@ type PostProps = {
 };
 
 export const Post = (props: PostProps) => {
-  const { lgDown } = useBreakpoints();
+  const { smDown, smUp, lgDown, lgUp } = useBreakpoints();
 
   // Component state
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -39,9 +39,16 @@ export const Post = (props: PostProps) => {
 
   // Responsive image source
   useEffect(() => {
-    lgDown && setSrc(props.post.photos[0]?.alt_sizes[1].url);
-    !lgDown && setSrc(props.post.photos[0]?.alt_sizes[0].url);
-  }, [props, lgDown]);
+    if (smDown || smUp || lgDown) {
+      if (smDown) {
+        setSrc(props.post.photos[0]?.alt_sizes[2].url);
+      } else if (smUp && lgDown) {
+        setSrc(props.post.photos[0]?.alt_sizes[1].url);
+      } else if (lgUp) {
+        setSrc(props.post.photos[0]?.alt_sizes[0].url);
+      }
+    }
+  }, [props, smDown, smUp, lgDown, lgUp]);
 
   return (
     <Box

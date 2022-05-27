@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
 import { Box, Button } from '@mui/material';
 import clsx from 'clsx';
@@ -13,7 +13,7 @@ import { useBreakpoints } from '../../hooks/use-breakpoints.hook';
 import styles from './IconTextButton.module.scss';
 
 type IconTextButtonProps = {
-  children: string;
+  children: ReactNode | string;
   classes?: string;
   icon: [IconPrefix, IconName];
   size?: 'large';

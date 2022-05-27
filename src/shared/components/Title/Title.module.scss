@@ -13,6 +13,10 @@
     @include border-b-solid(1);
     @include text-xl;
   }
+  &-text {
+    max-width: calc(100vw - 32px - 180px);
+    @include truncate;
+  }
 }
 
 @media (min-width: $sm) {

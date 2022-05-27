@@ -58,7 +58,7 @@ export const Title = () => {
           size="large"
           onClick={onNavigateBack}
         >
-          {pageTitle.text}
+          <div className={styles['title-text']}>{pageTitle.text}</div>
         </IconTextButton>
       ) : (
         <Box

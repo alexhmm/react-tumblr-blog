@@ -174,7 +174,7 @@ export const Posts = () => {
       loader={null}
       next={onAddPosts}
       scrollThreshold={1}
-      className={clsx(styles['posts'], 'page-content')}
+      className={styles['posts']}
     >
       {postElements[tagged ?? '/']}
       <Box
