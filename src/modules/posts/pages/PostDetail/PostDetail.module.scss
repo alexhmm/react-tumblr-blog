@@ -1,61 +1,60 @@
 @import '../../../../shared/styles/styles.scss';
 
 .post-detail {
-  @include relative;
-  @include transition-opacity;
-  &-container {
+  @include flex;
+  @include flex-col;
+  @include items-center;
+  @include justify-center;
+  @include w-screen;
+  &-content {
     @include flex;
-    @include items-center;
-    @include justify-center;
-    @include h-screen;
-    @include w-screen;
-  }
-  &-image {
-    max-height: 85vh;
-    @include max-w-full;
-  }
-  &-overlay {
-    @include absolute;
-    height: calc(100% - 4px);
-    @include opacity(0);
-    @include transition-opacity;
-    @include w-full;
-    &-title {
-      @include absolute;
-      @include bottom(4);
-      @include p(2);
-      @include left(4);
-      @include max-w-1\/2;
+    @include flex-col;
+    &-data {
+      @include flex;
+      @include flex-col;
+      @include flex-wrap;
+      @include px(4);
+      &-header {
+        @include flex;
+        @include justify-between;
+        @include mb(2);
+        @include mt(1);
+        &-date {
+          @include flex;
+          @include justify-between;
+          @include items-center;
+          @include my(2);
+        }
+      }
+      &-tags {
+        @include flex;
+        @include flex-wrap;
+        @include max-w-fit;
+        &-item {
+          @include mb(1.5);
+          @include mr(1.5);
+        }
+      }
     }
-  }
-}
-
-@media (min-width: $md) {
-  .post-detail {
-    &-image {
-      max-width: calc(100vw - 5rem);
-    }
-  }
-}
-
-@media (min-width: $lg) {
-  .post-detail {
-    &-image {
-      max-width: calc(100vw - 9rem);
-    }
-    &-overlay {
-      &-title {
-        @include px(4);
-        @include py(3);
+    &-src {
+      @include relative;
+      @include transition-opacity;
+      @include flex;
+      @include justify-center;
+      &-image {
+        max-height: 100vh;
+        @include max-w-full;
       }
     }
   }
 }
 
-@media (min-width: $xl) {
+@media (min-width: $sm) {
   .post-detail {
-    &-image {
-      max-width: calc(100vw - 400px);
+    &-content {
+      &-data {
+        @include px(0);
+      }
     }
   }
 }

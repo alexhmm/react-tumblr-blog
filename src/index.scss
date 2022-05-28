@@ -33,7 +33,7 @@ iframe {
 }
 
 // Global classes
-.page-content {
+.page-common {
   @include box-border;
   @include pb(8);
   @include pt(17);
@@ -41,8 +41,21 @@ iframe {
   @include w-full;
 }
 
+.page-image {
+  @include box-border;
+  @include pb(8);
+  @include pt(17);
+  @include w-full;
+}
+
 @media (min-width: $sm) {
-  .page-content {
+  .page-common {
+    @include pb(16);
+    @include pt(24);
+    @include px(8);
+  }
+
+  .page-image {
     @include pb(16);
     @include pt(24);
     @include px(8);
@@ -50,7 +63,12 @@ iframe {
 }
 
 @media (min-width: $lg) {
-  .page-content {
+  .page-common {
+    @include pt(32);
+    @include px(16);
+  }
+
+  .page-image {
     @include pt(32);
     @include px(16);
   }

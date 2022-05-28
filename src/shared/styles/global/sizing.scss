@@ -66,6 +66,10 @@
   max-width: 50%;
 }
 
+@mixin max-w-fit {
+  max-width: fit-content;
+}
+
 @mixin max-w-full {
   max-width: 100%;
 }

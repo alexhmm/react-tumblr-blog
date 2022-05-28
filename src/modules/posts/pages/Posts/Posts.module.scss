@@ -1,12 +1,9 @@
 @import '../../../../shared/styles/styles.scss';
 
 .posts {
-  @include box-border;
   @include flex;
   @include flex-col;
   @include items-center;
-  @include pb(8);
-  @include pt(17);
   &-info {
     @include fixed;
     @include left-1\/2;
@@ -28,21 +25,6 @@
     @include -translate-x-1\/2;
     @include transition-opacity;
     @include z(20);
-  }
-}
-
-@media (min-width: $sm) {
-  .posts {
-    @include pb(16);
-    @include pt(24);
-    @include px(8);
-  }
-}
-
-@media (min-width: $lg) {
-  .posts {
-    @include pt(32);
-    @include px(16);
   }
 }
 

@@ -26,7 +26,7 @@ export const About = () => {
     <>
       {process.env.REACT_APP_ABOUT && (
         <div
-          className={clsx(styles['about'], 'page-content')}
+          className={clsx(styles['about'], 'page-common')}
           dangerouslySetInnerHTML={{ __html: process.env.REACT_APP_ABOUT }}
         ></div>
       )}
