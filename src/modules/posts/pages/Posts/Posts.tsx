@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box } from '@mui/material';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -24,6 +24,9 @@ import clsx from 'clsx';
 export const Posts = () => {
   const { tagged } = useParams();
   const { postsGet } = usePosts();
+
+  // Component state
+  const [init, setInit] = useState<boolean>(false);
 
   // Posts store state
   const [
@@ -60,7 +63,7 @@ export const Posts = () => {
   // Reset post (detail)
   useEffect(() => {
     setPost(null);
-
+    setInit(true);
     // eslint-disable-next-line
   }, []);
 
@@ -183,10 +186,8 @@ export const Posts = () => {
       >
         <Loader />
       </Box>
-      {!postElements[tagged ?? '/'] && tagged && !loading && (
-        <Box className={clsx(styles['posts-info'], styles['posts-info-empty'])}>
-          No posts found: #{tagged}
-        </Box>
+      {!postElements[tagged ?? '/'] && init && tagged && !loading && (
+        <Box className={styles['posts-empty']}>No posts found: #{tagged}</Box>
       )}
     </InfiniteScroll>
   );

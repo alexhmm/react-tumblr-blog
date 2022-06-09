@@ -62,10 +62,10 @@ export const usePostsStore = create<PostsState>((set, get) => ({
           [tag ?? '/']: {
             ...state.posts[tag ?? '/'],
             offset: offset + limit,
-            posts: state.posts[tag ?? '/'].posts.concat(postsResponse.posts)
-          }
+            posts: state.posts[tag ?? '/'].posts.concat(postsResponse.posts),
+          },
         },
-        tag
+        tag,
       }));
     }
     await set({ loading: false });
@@ -89,8 +89,8 @@ export const usePostsStore = create<PostsState>((set, get) => ({
       ...state,
       postElements: {
         ...state.postElements,
-        [tag ?? '/']: postElements
-      }
+        [tag ?? '/']: postElements,
+      },
     })),
   setPosts: async (fetchPosts: PostsResponse, tag: string) => {
     // Fetch tumblr posts
@@ -105,12 +105,12 @@ export const usePostsStore = create<PostsState>((set, get) => ({
           [tag ?? '/']: {
             offset: 0,
             posts: fetchPosts.posts,
-            total: fetchPosts.total_posts
-          }
+            total: fetchPosts.total_posts,
+          },
         },
-        tag
+        tag,
       }));
     }
   },
-  setTag: (tag: string | null) => set({ tag })
+  setTag: (tag: string | null) => set({ tag }),
 }));

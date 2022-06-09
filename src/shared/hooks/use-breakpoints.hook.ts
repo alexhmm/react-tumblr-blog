@@ -10,30 +10,45 @@ declare module '@mui/material/styles' {
 
 /**
  * Custom hook to get current used breakpoint.
+ * NoSsr option set to true for client-side only rendering.
  * @returns Theme breakpoints with current usage status
  */
 export const useBreakpoints = () => {
   const theme = useTheme();
-  const xs = useMediaQuery(theme.breakpoints.between('xs', 'md'));
-  const xsUp = useMediaQuery(theme.breakpoints.up('xs'));
-  const sm = useMediaQuery(theme.breakpoints.between('sm', 'lg'));
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const smUp = useMediaQuery(theme.breakpoints.up('sm'));
-  const md = useMediaQuery(theme.breakpoints.between('md', 'lg'));
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
-  const mdUp = useMediaQuery(theme.breakpoints.up('md'));
-  const lg = useMediaQuery(theme.breakpoints.between('lg', 'xl'));
-  const lgDown = useMediaQuery(theme.breakpoints.down('lg'));
-  const lgUp = useMediaQuery(theme.breakpoints.up('lg'));
-  const xl = useMediaQuery(theme.breakpoints.between('xl', 'xxl'));
-  const xlDown = useMediaQuery(theme.breakpoints.down('xl'));
-  const xlUp = useMediaQuery(theme.breakpoints.up('xl'));
-  const xxl = useMediaQuery(theme.breakpoints.between('xxl', 'xxxl'));
-  const xxlDown = useMediaQuery(theme.breakpoints.down('xxl'));
-  const xxlUp = useMediaQuery(theme.breakpoints.up('xxl'));
-  const xxxl = useMediaQuery(theme.breakpoints.up('xxxl'));
-  const xxxlDown = useMediaQuery(theme.breakpoints.down('xxxl'));
-  const xxxlUp = useMediaQuery(theme.breakpoints.up('xxxl'));
+  const xs = useMediaQuery(theme.breakpoints.between('xs', 'md'), {
+    noSsr: true,
+  });
+  const xsUp = useMediaQuery(theme.breakpoints.up('xs'), { noSsr: true });
+  const sm = useMediaQuery(theme.breakpoints.between('sm', 'lg'), {
+    noSsr: true,
+  });
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'), { noSsr: true });
+  const smUp = useMediaQuery(theme.breakpoints.up('sm'), { noSsr: true });
+  const md = useMediaQuery(theme.breakpoints.between('md', 'lg'), {
+    noSsr: true,
+  });
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'), { noSsr: true });
+  const mdUp = useMediaQuery(theme.breakpoints.up('md'), { noSsr: true });
+  const lg = useMediaQuery(theme.breakpoints.between('lg', 'xl'), {
+    noSsr: true,
+  });
+  const lgDown = useMediaQuery(theme.breakpoints.down('lg'), { noSsr: true });
+  const lgUp = useMediaQuery(theme.breakpoints.up('lg'), { noSsr: true });
+  const xl = useMediaQuery(theme.breakpoints.between('xl', 'xxl'), {
+    noSsr: true,
+  });
+  const xlDown = useMediaQuery(theme.breakpoints.down('xl'), { noSsr: true });
+  const xlUp = useMediaQuery(theme.breakpoints.up('xl'), { noSsr: true });
+  const xxl = useMediaQuery(theme.breakpoints.between('xxl', 'xxxl'), {
+    noSsr: true,
+  });
+  const xxlDown = useMediaQuery(theme.breakpoints.down('xxl'), { noSsr: true });
+  const xxlUp = useMediaQuery(theme.breakpoints.up('xxl'), { noSsr: true });
+  const xxxl = useMediaQuery(theme.breakpoints.up('xxxl'), { noSsr: true });
+  const xxxlDown = useMediaQuery(theme.breakpoints.down('xxxl'), {
+    noSsr: true,
+  });
+  const xxxlUp = useMediaQuery(theme.breakpoints.up('xxxl'), { noSsr: true });
 
   return {
     xs,
@@ -55,6 +70,6 @@ export const useBreakpoints = () => {
     xxlUp,
     xxxl,
     xxxlDown,
-    xxxlUp
+    xxxlUp,
   };
 };

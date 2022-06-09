@@ -37,15 +37,12 @@ export const PostDetail = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [post, setPost] = useState<IPost | undefined>(undefined);
   const [src, setSrc] = useState<string>('');
+  const [touch, setTouch] = useState<boolean>(false);
 
   // Shared store state
-  const [touchId, setPageTitle, setTouch] = useSharedStore(
-    (state: SharedState) => [
-      state.touchId,
-      state.setPageTitle,
-      state.setTouchId,
-    ]
-  );
+  const [setPageTitle] = useSharedStore((state: SharedState) => [
+    state.setPageTitle,
+  ]);
 
   // Effect on component mount
   useEffect(() => {
@@ -96,13 +93,13 @@ export const PostDetail = () => {
               className={styles['post-detail-content-src']}
               sx={{
                 opacity: loaded ? 1 : 0,
-                zIndex: touchId === post.id_string ? 50 : 10,
+                zIndex: touch ? 50 : 10,
               }}
             >
               <Zoomable
                 releaseAnimationTimeout={250}
-                onTouchStart={() => setTouch(post.id_string)}
-                onTouchEnd={() => setTouch(undefined)}
+                onTouchStart={() => setTouch(true)}
+                onTouchEnd={() => setTouch(false)}
               >
                 <img
                   alt={post.caption}
@@ -112,7 +109,12 @@ export const PostDetail = () => {
                 />
               </Zoomable>
             </Box>
-            <div className={styles['post-detail-content-data']}>
+            <Box
+              className={styles['post-detail-content-data']}
+              sx={{
+                opacity: loaded ? 1 : 0,
+              }}
+            >
               {date && (
                 <div className={styles['post-detail-content-data-header-date']}>
                   <span>{date}</span>
@@ -132,7 +134,7 @@ export const PostDetail = () => {
                   </HeroIconTextButton>
                 ))}
               </div>
-            </div>
+            </Box>
           </Box>
         </div>
       )}

@@ -4,19 +4,8 @@
   @include flex;
   @include flex-col;
   @include items-center;
-  &-info {
-    @include fixed;
-    @include left-1\/2;
-    @include top-1\/2;
-    @include -translate-x-1\/2;
-    @include -translate-y-1\/2;
-    &-empty {
-      @include text-xl;
-    }
-    &-tagged {
-      letter-spacing: 1rem;
-      @include text-2xl;
-    }
+  &-empty {
+    @include text-xl;
   }
   &-loading {
     @include bottom(4);
@@ -30,13 +19,8 @@
 
 @media (min-width: $xl) {
   .posts {
-    &-info {
-      &-empty {
-        @include text-3xl;
-      }
-      &-tagged {
-        @include text-6xl;
-      }
+    &-empty {
+      @include text-3xl;
     }
   }
 }

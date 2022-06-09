@@ -21,7 +21,6 @@ export const usePosts = () => {
       limit: limit ?? 10,
       offset,
       tag,
-      type: 'photo',
     };
 
     const url = `${process.env.REACT_APP_API_URL}/posts/?${stringify(params)}`;

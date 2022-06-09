@@ -78,7 +78,7 @@ export const Search = () => {
 
   return (
     <Box
-      className={clsx(styles['search'], 'page-content')}
+      className={clsx(styles['search'], 'page-common')}
       ref={searchRef}
       sx={{
         backgroundColor: 'background.paper',
