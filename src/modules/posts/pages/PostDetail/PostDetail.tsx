@@ -122,17 +122,22 @@ export const PostDetail = () => {
                 </div>
               )}
               <div className={styles['post-detail-content-data-tags']}>
-                {post.tags.map((tag) => (
-                  <HeroIconTextButton
-                    key={tag}
-                    classes={styles['post-detail-content-data-tags-item']}
-                    icon={<HashtagIcon />}
-                    iconSize={16}
-                    onClick={() => navigate(`/tagged/${tag}`)}
-                  >
-                    {tag}
-                  </HeroIconTextButton>
-                ))}
+                {post.tags.map((tag) => {
+                  if (!process.env.REACT_APP_TAGS_EXCLUDE?.includes(tag)) {
+                    return (
+                      <HeroIconTextButton
+                        key={tag}
+                        classes={styles['post-detail-content-data-tags-item']}
+                        icon={<HashtagIcon />}
+                        iconSize={16}
+                        onClick={() => navigate(`/tagged/${tag}`)}
+                      >
+                        {tag}
+                      </HeroIconTextButton>
+                    );
+                  }
+                  return null;
+                })}
               </div>
             </Box>
           </Box>

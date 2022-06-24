@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box } from '@mui/material';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -26,7 +26,7 @@ export const Posts = () => {
   const { postsGet } = usePosts();
 
   // Component state
-  const [init, setInit] = useState<boolean>(false);
+  const [init, setInit] = useState<boolean>(false); // Prevent InfiniteScroll next function on navigate back. Show no founds text after search
 
   // Posts store state
   const [
@@ -63,7 +63,10 @@ export const Posts = () => {
   // Reset post (detail)
   useEffect(() => {
     setPost(null);
-    setInit(true);
+    // Timeout: Prevent InfiniteScroll next function on navigate back
+    setTimeout(() => {
+      setInit(true);
+    }, 250);
     // eslint-disable-next-line
   }, []);
 
@@ -150,8 +153,9 @@ export const Posts = () => {
   /**
    * Handler to add posts.
    */
-  const onAddPosts = async () => {
+  const onAddPosts = useCallback(async () => {
     if (
+      init &&
       posts[tagged ? tagged : '/'] &&
       posts[tagged ? tagged : '/'].total >=
         posts[tagged ? tagged : '/'].offset + limit
@@ -168,7 +172,8 @@ export const Posts = () => {
         tagged ?? '/'
       );
     }
-  };
+    // eslint-disable-next-line
+  }, [init, limit, posts, tagged]);
 
   return (
     <InfiniteScroll

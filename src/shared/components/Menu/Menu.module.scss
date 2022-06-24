@@ -55,9 +55,14 @@
 }
 
 .menu-content-bottom-footer {
-  @include self-end;
+  @include flex;
+  @include items-center;
+  @include justify-between;
   & a {
     @include ml(4);
+  }
+  &-copyright {
+    @include text-xs;
   }
 }
 

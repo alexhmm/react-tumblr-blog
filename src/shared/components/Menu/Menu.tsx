@@ -164,20 +164,28 @@ export const Menu = () => {
               )}
             </Box>
             <div className={styles['menu-content-bottom-footer']}>
-              <a
-                href="https://www.tumblr.com/policy/de/impressum"
-                rel="noreferrer"
-                target="_blank"
+              <Box
+                className={styles['menu-content-bottom-footer-copyright']}
+                sx={{ color: 'text.secondary' }}
               >
-                <TextButton size="xtrasmall">Imprint</TextButton>
-              </a>
-              <a
-                href="https://www.tumblr.com/privacy/de"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <TextButton size="xtrasmall">Privacy</TextButton>
-              </a>
+                © {process.env.REACT_APP_COPYRIGHT}
+              </Box>
+              <div>
+                <a
+                  href="https://www.tumblr.com/policy/de/impressum"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <TextButton size="xtrasmall">Imprint</TextButton>
+                </a>
+                <a
+                  href="https://www.tumblr.com/privacy/de"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <TextButton size="xtrasmall">Privacy</TextButton>
+                </a>
+              </div>
             </div>
           </div>
         </Box>
