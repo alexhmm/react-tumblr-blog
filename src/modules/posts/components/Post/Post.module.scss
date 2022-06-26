@@ -11,12 +11,25 @@
     @include opacity(0);
     @include transition-opacity;
     @include w-full;
+    &-notes {
+      @include absolute;
+      @include flex;
+      @include items-center;
+      @include p(2);
+      @include right(4);
+      @include top(4);
+      &-icon {
+        @include flex;
+        @include items-center;
+        @include mr(2);
+      }
+    }
     &-title {
       @include absolute;
       @include bottom(4);
+      max-width: calc(100% - 4rem);
       @include p(2);
       @include left(4);
-      @include max-w-1\/2;
     }
   }
 }
@@ -42,6 +55,10 @@
 @media (min-width: $lg) {
   .post {
     &-overlay {
+      &-notes {
+        @include px(4);
+        @include py(3);
+      }
       &-title {
         @include px(4);
         @include py(3);

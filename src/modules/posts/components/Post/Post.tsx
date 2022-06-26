@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
+import { HeartIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
+
+// Components
+import { HeroIcon } from '../../../../shared/ui/HeroIcon/HeroIcon';
 
 // Hooks
 import { useBreakpoints } from '../../../../shared/hooks/use-breakpoints.hook';
@@ -67,6 +71,18 @@ export const Post = (props: PostProps) => {
           }}
         >
           {props.post.summary.toUpperCase()}
+        </Box>
+        <Box
+          className={styles['post-overlay-notes']}
+          sx={{
+            backgroundColor: 'background.default',
+            color: 'text.primary',
+          }}
+        >
+          <HeroIcon classes={styles['post-overlay-notes-icon']}>
+            <HeartIcon />
+          </HeroIcon>
+          <div>{props.post.note_count}</div>
         </Box>
       </Link>
       <img
