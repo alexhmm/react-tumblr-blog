@@ -5,6 +5,7 @@ declare module '@mui/material/styles' {
   interface BreakpointOverrides {
     xxl: true;
     xxxl: true;
+    xxxxl: true;
   }
 }
 
@@ -49,6 +50,11 @@ export const useBreakpoints = () => {
     noSsr: true,
   });
   const xxxlUp = useMediaQuery(theme.breakpoints.up('xxxl'), { noSsr: true });
+  const xxxxl = useMediaQuery(theme.breakpoints.up('xxxxl'), { noSsr: true });
+  const xxxxlDown = useMediaQuery(theme.breakpoints.down('xxxxl'), {
+    noSsr: true,
+  });
+  const xxxxlUp = useMediaQuery(theme.breakpoints.up('xxxxl'), { noSsr: true });
 
   return {
     xs,
@@ -71,5 +77,8 @@ export const useBreakpoints = () => {
     xxxl,
     xxxlDown,
     xxxlUp,
+    xxxxl,
+    xxxxlDown,
+    xxxxlUp,
   };
 };

@@ -1,11 +1,11 @@
 @import '../../../../shared/styles/styles.scss';
 
 .posts {
-  @include flex;
-  @include flex-col;
-  @include items-center;
   &-empty {
+    @include flex;
+    @include justify-center;
     @include text-xl;
+    @include w-full;
   }
   &-loading {
     @include bottom(4);
@@ -15,6 +15,18 @@
     @include transition-opacity;
     @include z(20);
   }
+}
+
+.posts-gallery {
+  @include flex;
+  @include flex-wrap;
+  @include items-center;
+}
+
+.posts-list {
+  @include flex;
+  @include flex-col;
+  @include items-center;
 }
 
 @media (min-width: $xl) {

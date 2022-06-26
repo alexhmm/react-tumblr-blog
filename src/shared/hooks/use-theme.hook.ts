@@ -27,6 +27,7 @@ const breakpoints = {
     xl: 1280,
     xxl: 1536,
     xxxl: 1920,
+    xxxxl: 2560,
   },
 };
 

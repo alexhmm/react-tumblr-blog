@@ -18,12 +18,14 @@ export const usePosts = () => {
   ): Promise<PostsResponse> => {
     const params = {
       api_key: process.env.REACT_APP_API_KEY,
-      limit: limit ?? 10,
+      limit: limit ?? 20,
       offset,
       tag,
     };
 
-    const url = `${process.env.REACT_APP_API_URL}/posts/?${stringify(params)}`;
+    const url = `https://api.tumblr.com/v2/blog/${
+      process.env.REACT_APP_TUMBLR_NAME
+    }.tumblr.com/posts/photo?${stringify(params)}`;
 
     return fetch(url)
       .then((response) => {
@@ -53,7 +55,9 @@ export const usePosts = () => {
       type: 'photo',
     };
 
-    const url = `${process.env.REACT_APP_API_URL}/posts/?${stringify(params)}`;
+    const url = `https://api.tumblr.com/v2/blog/${
+      process.env.REACT_APP_TUMBLR_NAME
+    }.tumblr.com/posts/?${stringify(params)}`;
 
     return fetch(url)
       .then((response) => {

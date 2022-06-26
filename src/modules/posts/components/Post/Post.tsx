@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
+import clsx from 'clsx';
 
 // Hooks
 import { useBreakpoints } from '../../../../shared/hooks/use-breakpoints.hook';
@@ -16,21 +17,36 @@ type PostProps = {
 };
 
 export const Post = (props: PostProps) => {
-  const { smDown } = useBreakpoints();
+  const { smDown, xxxxlDown } = useBreakpoints();
 
   // Component state
   const [loaded, setLoaded] = useState<boolean>(false);
   const [src, setSrc] = useState<string>('');
 
-  // Responsive image source
+  // Responsive image source (list view type)
   useEffect(() => {
-    smDown && setSrc(props.post.photos[0]?.alt_sizes[2].url);
-    !smDown && setSrc(props.post.photos[0]?.alt_sizes[0].url);
+    if (process.env.REACT_APP_VIEW_TYPE === 'List') {
+      smDown && setSrc(props.post.photos[0]?.alt_sizes[2].url);
+      !smDown && setSrc(props.post.photos[0]?.alt_sizes[0].url);
+    }
   }, [props.post, smDown]);
+
+  // Responsive image source (gallery view type)
+  useEffect(() => {
+    if (process.env.REACT_APP_VIEW_TYPE === 'Gallery') {
+      xxxxlDown && setSrc(props.post.photos[0]?.alt_sizes[2].url);
+      !xxxxlDown && setSrc(props.post.photos[0]?.alt_sizes[1].url);
+    }
+  }, [props.post, xxxxlDown]);
 
   return (
     <Box
-      className={styles['post']}
+      className={clsx(
+        styles['post'],
+        process.env.REACT_APP_VIEW_TYPE === 'Gallery'
+          ? styles['post-gallery']
+          : styles['post-list']
+      )}
       sx={{
         ':hover #post-overlay': {
           opacity: 1,
@@ -55,7 +71,11 @@ export const Post = (props: PostProps) => {
       </Link>
       <img
         alt={props.post.caption}
-        className={styles['post-image']}
+        className={
+          process.env.REACT_APP_VIEW_TYPE === 'Gallery'
+            ? styles['post-gallery-image']
+            : styles['post-list-image']
+        }
         src={src}
         onLoad={() => setLoaded(true)}
       />

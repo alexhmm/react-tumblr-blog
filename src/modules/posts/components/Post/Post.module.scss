@@ -1,18 +1,13 @@
 @import '../../../../shared/styles/styles.scss';
 
 .post {
+  @include box-border;
   @include flex;
-  @include flex-col;
-  @include mb(8);
   @include relative;
   @include transition-opacity;
-  &-image {
-    max-height: 85vh;
-    @include max-w-full;
-  }
   &-overlay {
     @include absolute;
-    height: calc(100% - 4px);
+    @include h-full;
     @include opacity(0);
     @include transition-opacity;
     @include w-full;
@@ -26,14 +21,53 @@
   }
 }
 
+.post-gallery {
+  @include m(1);
+  width: calc(50% - 0.5rem);
+  &-image {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    @include w-full;
+  }
+}
+
+.post-list {
+  @include mb(8);
+  &-image {
+    max-height: 85vh;
+    @include max-w-full;
+  }
+}
+
 @media (min-width: $lg) {
   .post {
-    @include mb(16);
     &-overlay {
       &-title {
         @include px(4);
         @include py(3);
       }
     }
+  }
+
+  .post-gallery {
+    @include m(2);
+    width: calc(33.3333% - 1rem);
+  }
+
+  .post-list {
+    @include mb(16);
+  }
+}
+
+@media (min-width: $xxxl) {
+  .post-gallery {
+    @include m(4);
+    width: calc(25% - 2rem);
+  }
+}
+
+@media (min-width: $xxxxl) {
+  .post-gallery {
+    width: calc(20% - 2rem);
   }
 }

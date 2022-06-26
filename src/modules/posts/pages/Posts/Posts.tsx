@@ -158,17 +158,17 @@ export const Posts = () => {
       init &&
       posts[tagged ? tagged : '/'] &&
       posts[tagged ? tagged : '/'].total >=
-        posts[tagged ? tagged : '/'].offset + limit
+        posts[tagged ? tagged : '/'].posts.length
     ) {
       setLoading(true);
       addPosts(
         await postsGet(
           limit,
-          posts[tagged ? tagged : '/'].offset + limit,
+          posts[tagged ? tagged : '/'].posts.length,
           tagged
         ),
         limit,
-        posts[tagged ? tagged : '/'].offset,
+        posts[tagged ? tagged : '/'].posts.length,
         tagged ?? '/'
       );
     }
@@ -182,7 +182,15 @@ export const Posts = () => {
       loader={null}
       next={onAddPosts}
       scrollThreshold={1}
-      className={clsx(styles['posts'], 'page-image')}
+      className={clsx(
+        process.env.REACT_APP_VIEW_TYPE === 'Gallery'
+          ? styles['posts-gallery']
+          : styles['posts-list'],
+        'page-image',
+        process.env.REACT_APP_VIEW_TYPE === 'Gallery'
+          ? 'page-image-gallery'
+          : 'page-image-list'
+      )}
     >
       {postElements[tagged ?? '/']}
       <Box

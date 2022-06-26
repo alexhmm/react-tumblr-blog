@@ -46,6 +46,9 @@ iframe {
   @include pb(8);
   @include pt(17);
   @include w-full;
+  &-gallery {
+    @include px(1);
+  }
 }
 
 @media (min-width: $sm) {
@@ -58,7 +61,12 @@ iframe {
   .page-image {
     @include pb(16);
     @include pt(24);
-    @include px(8);
+    &-gallery {
+      @include px(6);
+    }
+    &-list {
+      @include px(8);
+    }
   }
 }
 
@@ -70,6 +78,19 @@ iframe {
 
   .page-image {
     @include pt(32);
-    @include px(16);
+    &-gallery {
+      @include px(14);
+    }
+    &-list {
+      @include px(16);
+    }
+  }
+}
+
+@media (min-width: $xxxl) {
+  .page-image {
+    &-gallery {
+      @include px(12);
+    }
   }
 }
