@@ -63,27 +63,42 @@ export const Post = (props: PostProps) => {
         className={styles['post-overlay']}
         id="post-overlay"
       >
-        <Box
-          className={styles['post-overlay-title']}
-          sx={{
-            backgroundColor: 'background.default',
-            color: 'text.primary',
-          }}
-        >
-          {props.post.summary.toUpperCase()}
-        </Box>
-        <Box
-          className={styles['post-overlay-notes']}
-          sx={{
-            backgroundColor: 'background.default',
-            color: 'text.primary',
-          }}
-        >
-          <HeroIcon classes={styles['post-overlay-notes-icon']}>
-            <HeartIcon />
-          </HeroIcon>
-          <div>{props.post.note_count}</div>
-        </Box>
+        <div className={styles['post-overlay-data']}>
+          {props.post.summary && props.post.summary.length > 0 ? (
+            <Box
+              className={clsx(
+                styles['post-overlay-data-title'],
+                styles['post-overlay-data-card']
+              )}
+              sx={{
+                backgroundColor: 'background.default',
+                color: 'text.primary',
+              }}
+            >
+              {props.post.summary.toUpperCase()}
+            </Box>
+          ) : (
+            <div></div>
+          )}
+          <Box
+            className={clsx(
+              styles['post-overlay-data-notes'],
+              styles['post-overlay-data-card'],
+              process.env.REACT_APP_VIEW_TYPE === 'Gallery'
+                ? styles['post-gallery-overlay-notes']
+                : styles['post-list-overlay-notes']
+            )}
+            sx={{
+              backgroundColor: 'background.default',
+              color: 'text.primary',
+            }}
+          >
+            <HeroIcon classes={styles['post-overlay-data-notes-icon']}>
+              <HeartIcon />
+            </HeroIcon>
+            <div>{props.post.note_count}</div>
+          </Box>
+        </div>
       </Link>
       <img
         alt={props.post.caption}

@@ -11,25 +11,33 @@
     @include opacity(0);
     @include transition-opacity;
     @include w-full;
-    &-notes {
-      @include absolute;
-      @include flex;
-      @include items-center;
-      @include p(2);
-      @include right(4);
-      @include top(4);
-      &-icon {
-        @include flex;
-        @include items-center;
-        @include mr(2);
-      }
-    }
-    &-title {
+    &-data {
       @include absolute;
       @include bottom(4);
-      max-width: calc(100% - 4rem);
-      @include p(2);
+      @include flex;
+      @include items-center;
+      @include justify-between;
       @include left(4);
+      width: calc(100% - 2rem);
+      &-card {
+        @include box-border;
+        @include h(9);
+        @include p(2);
+      }
+      &-notes {
+        @include items-center;
+        @include ml(4);
+        @include shrink-0;
+        &-icon {
+          @include flex;
+          @include items-center;
+          @include mr(2);
+        }
+      }
+      &-title {
+        @include truncate;
+        max-width: 100%;
+      }
     }
   }
 }
@@ -42,6 +50,11 @@
     object-fit: cover;
     @include w-full;
   }
+  &-overlay {
+    &-notes {
+      @include hidden;
+    }
+  }
 }
 
 .post-list {
@@ -50,18 +63,32 @@
     max-height: 85vh;
     @include max-w-full;
   }
+  &-overlay {
+    &-notes {
+      @include flex;
+    }
+  }
+}
+
+@media (min-width: $sm) {
+  .post-gallery {
+    &-overlay {
+      &-notes {
+        @include flex;
+      }
+    }
+  }
 }
 
 @media (min-width: $lg) {
   .post {
     &-overlay {
-      &-notes {
-        @include px(4);
-        @include py(3);
-      }
-      &-title {
-        @include px(4);
-        @include py(3);
+      &-data {
+        &-card {
+          @include h(11);
+          @include px(4);
+          @include py(3);
+        }
       }
     }
   }
