@@ -1,7 +1,3 @@
-@import '../../../../shared/styles/styles.scss';
-
 .about {
-  @include flex;
-  @include flex-col;
-  @include items-center;
+  @apply flex flex-col items-center;
 }

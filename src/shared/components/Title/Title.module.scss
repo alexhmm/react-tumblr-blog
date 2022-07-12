@@ -1,39 +1,27 @@
-@import '../../styles/styles.scss';
+@import '../../styles/breakpoints.scss';
 
 .title {
-  @include fixed;
-  @include flex;
-  @include h(9);
-  @include items-center;
-  @include left(4);
-  @include top(4);
-  @include uppercase;
-  @include z(30);
+  @apply fixed flex h-9 items-center left-4 top-4 uppercase z-30;
   &-home {
-    @include border-b-solid(1);
-    @include text-xl;
+    @apply border-0 border-b border-solid text-xl;
   }
   &-text {
-    max-width: calc(100vw - 32px - 180px);
-    @include truncate;
+    @apply max-w-[calc(100vw-32px-180px)] truncate;
   }
 }
 
 @media (min-width: $sm) {
   .title {
-    @include left(8);
-    @include top(8);
+    @apply left-8 top-8;
   }
 }
 
 @media (min-width: $lg) {
   .title {
-    @include left(16);
-    @include top(12);
+    @apply left-16 top-12;
     &-home {
-      @include border-b-solid(2);
-      @include text-2xl;
-      @include translate-y(1);
+      @apply border-b-2 text-2xl;
+      transform: translateY(1px);
     }
   }
 }

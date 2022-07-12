@@ -1,11 +1,7 @@
-@import '../../styles/styles.scss';
-
 .loader {
-  @include flex;
-  @include items-center;
+  @apply flex items-center;
   & div {
-    @include rounded-full;
-    @include mx(0.75);
+    @apply mx-1 rounded-full;
     -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
     animation: sk-bouncedelay 1.4s infinite ease-in-out both;
   }

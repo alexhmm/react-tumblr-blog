@@ -1,8 +1,0 @@
-@import '../../styles/styles.scss';
-
-.text-field {
-  @include w-full;
-  &-reset {
-    @include p(1);
-  }
-}

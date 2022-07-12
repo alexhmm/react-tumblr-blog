@@ -1,38 +1,29 @@
-@import '../../../../shared/styles/styles.scss';
+@import '../../../../shared/styles/breakpoints.scss';
 
 .posts {
   &-empty {
-    @include flex;
-    @include justify-center;
-    @include text-xl;
-    @include w-full;
+    @apply flex justify-center text-xl w-full;
   }
   &-loading {
-    @include bottom(4);
-    @include fixed;
-    @include left-1\/2;
-    @include -translate-x-1\/2;
-    @include transition-opacity;
-    @include z(20);
+    @apply duration-300 bottom-4 fixed left-1/2 -translate-x-1/2 transition-opacity z-20;
   }
 }
 
 .posts-gallery {
-  @include flex;
-  @include flex-wrap;
-  @include items-center;
+  @apply flex flex-wrap items-center;
 }
 
 .posts-list {
-  @include flex;
-  @include flex-col;
-  @include items-center;
+  @apply flex flex-col items-center;
 }
 
 @media (min-width: $xl) {
   .posts {
     &-empty {
-      @include text-3xl;
+      @apply text-3xl;
+    }
+    &-loading {
+      @apply bottom-8;
     }
   }
 }

@@ -1,12 +1,9 @@
-@import '../../styles/styles.scss';
-
 .icon-button {
-  @include min-w(0);
-  @include rounded-md;
+  @apply min-w-0 rounded-md;
   &-disabled {
-    @include opacity(0.25);
+    @apply opacity-25;
   }
   &-icon {
-    @include transition-colors;
+    @apply duration-200 transition-colors;
   }
 }

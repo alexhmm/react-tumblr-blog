@@ -1,25 +1,17 @@
-@import '../../styles/styles.scss';
+@import '../../styles/breakpoints.scss';
 
 .icon-text-button {
-  @include flex;
-  @include items-center;
-  @include min-w(0);
-  @include p(0);
-  @include rounded-none;
+  @apply flex items-center min-w-0 p-0 rounded-none;
   &-text {
-    @include border-b-solid(1);
-    @include font-normal;
-    @include ml(1);
-    @include normal-case;
-    @include transition-colors;
+    @apply border-0 border-b border-solid duration-200 font-normal ml-1 normal-case transition-colors;
   }
 }
 
 @media (min-width: $lg) {
   .icon-text-button {
     &-text {
-      @include border-b-solid(2);
-      @include translate-y(1);
+      @apply border-b-2;
+      transform: translateY(1px);
     }
   }
 }

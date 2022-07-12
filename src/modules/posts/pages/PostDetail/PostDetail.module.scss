@@ -1,49 +1,28 @@
-@import '../../../../shared/styles/styles.scss';
+@import '../../../../shared/styles/breakpoints.scss';
 
 .post-detail {
-  @include flex;
-  @include flex-col;
-  @include items-center;
-  @include justify-center;
+  @apply flex flex-col items-center justify-center;
   &-content {
-    @include flex;
-    @include flex-col;
+    @apply flex flex-col;
     &-data {
-      @include flex;
-      @include flex-col;
-      @include flex-wrap;
-      @include px(4);
-      @include transition-opacity;
+      @apply duration-300 flex flex-col flex-wrap px-4 transition-opacity;
       &-header {
-        @include flex;
-        @include justify-between;
-        @include mb(2);
-        @include mt(1);
+        @apply flex justify-between mb-2 mt-1;
         &-date {
-          @include flex;
-          @include justify-between;
-          @include items-center;
-          @include my(2);
+          @apply flex justify-between items-center my-2;
         }
       }
       &-tags {
-        @include flex;
-        @include flex-wrap;
-        @include max-w-fit;
+        @apply flex flex-wrap max-w-fit;
         &-item {
-          @include mb(1.5);
-          @include mr(1.5);
+          @apply mb-1.5 mr-1.5;
         }
       }
     }
     &-src {
-      @include flex;
-      @include justify-center;
-      @include relative;
-      @include transition-opacity;
+      @apply duration-300 flex justify-center relative transition-opacity;
       &-image {
-        max-height: 100vh;
-        @include max-w-full;
+        @apply max-h-screen max-w-full;
       }
     }
   }
@@ -53,7 +32,7 @@
   .post-detail {
     &-content {
       &-data {
-        @include px(0);
+        @apply px-0;
       }
     }
   }

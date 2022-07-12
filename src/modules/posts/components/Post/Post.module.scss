@@ -1,71 +1,47 @@
-@import '../../../../shared/styles/styles.scss';
+@import '../../../../shared/styles/breakpoints.scss';
 
 .post {
-  @include box-border;
-  @include flex;
-  @include relative;
-  @include transition-opacity;
+  @apply box-border duration-300 flex relative transition-opacity;
   &-overlay {
-    @include absolute;
-    @include h-full;
-    @include opacity(0);
-    @include transition-opacity;
-    @include w-full;
+    @apply absolute duration-200 h-full opacity-0 transition-opacity w-full;
     &-data {
-      @include absolute;
-      @include bottom(4);
-      @include flex;
-      @include items-center;
-      @include justify-between;
-      @include left(4);
-      width: calc(100% - 2rem);
+      @apply w-[calc(100%-2rem)] absolute bottom-4 flex items-center justify-between left-4;
       &-card {
-        @include box-border;
-        @include h(9);
-        @include p(2);
+        @apply box-border h-9 p-2;
       }
       &-notes {
-        @include items-center;
-        @include ml(4);
-        @include shrink-0;
+        @apply items-center ml-4 shrink-0;
         &-icon {
-          @include flex;
-          @include items-center;
-          @include mr(2);
+          @apply flex items-center mr-2;
         }
       }
       &-title {
-        @include truncate;
-        max-width: 100%;
+        @apply max-w-full truncate;
       }
     }
   }
 }
 
 .post-gallery {
-  @include m(1);
-  width: calc(50% - 0.5rem);
+  @apply w-[calc(50%-0.5rem)] m-1;
   &-image {
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    @include w-full;
+    @apply aspect-[3/2] object-cover w-full;
   }
   &-overlay {
     &-notes {
-      @include hidden;
+      @apply hidden;
     }
   }
 }
 
 .post-list {
-  @include mb(8);
+  @apply mb-8;
   &-image {
-    max-height: 85vh;
-    @include max-w-full;
+    @apply max-h-[85vh] max-w-full;
   }
   &-overlay {
     &-notes {
-      @include flex;
+      @apply flex;
     }
   }
 }
@@ -74,7 +50,7 @@
   .post-gallery {
     &-overlay {
       &-notes {
-        @include flex;
+        @apply flex;
       }
     }
   }
@@ -85,28 +61,24 @@
     &-overlay {
       &-data {
         &-card {
-          @include h(11);
-          @include px(4);
-          @include py(3);
+          @apply h-11 px-4 py-3;
         }
       }
     }
   }
 
   .post-gallery {
-    @include m(2);
-    width: calc(33.3333% - 1rem);
+    @apply w-[calc(33.3333%-1rem)] m-2;
   }
 
   .post-list {
-    @include mb(16);
+    @apply mb-16;
   }
 }
 
 @media (min-width: $xxxl) {
   .post-gallery {
-    @include m(4);
-    width: calc(25% - 2rem);
+    @apply w-[calc(25%-2rem)] m-4;
   }
 }
 

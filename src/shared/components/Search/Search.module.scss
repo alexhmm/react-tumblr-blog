@@ -1,36 +1,14 @@
-@import '../../../shared/styles/styles.scss';
+@import '../../../shared/styles/breakpoints.scss';
 
 .search {
-  @include fixed;
-  @include h-screen;
-  @include hidden;
-  @include items-center;
-  @include justify-center;
-  @include left(0);
-  @include opacity(0);
-  @include p(4);
-  @include top(0);
-  @include transition-opacity;
-  @include w-screen;
-  @include z(40);
+  @apply duration-300 fixed h-screen hidden items-center justify-center left-0 opacity-0 p-4 top-0 transition-opacity w-screen z-40;
   &-close {
-    @include flex;
-    @include fixed;
-    @include h(9);
-    @include items-center;
-    @include right(4);
-    @include top(4);
-    @include z(20);
+    @apply flex fixed h-9 items-center right-4 top-4 z-20;
   }
   &-text-field {
-    @include w-full;
-    @include py(1);
-    @include text-lg;
+    @apply py-1 text-lg w-full;
     &-icon {
-      @include flex;
-      @include items-center;
-      @include justify-center;
-      @include p(1);
+      @apply flex items-center justify-center p-1;
     }
   }
 }
@@ -38,11 +16,10 @@
 @media (min-width: $sm) {
   .search {
     &-close {
-      @include right(8);
-      @include top(8);
+      @apply right-8 top-8;
     }
     &-text-field {
-      @include w(120);
+      width: 480px;
     }
   }
 }
@@ -50,8 +27,7 @@
 @media (min-width: $lg) {
   .search {
     &-text-field {
-      @include py(2);
-      @include text-xl;
+      @apply py-2 text-xl;
     }
   }
 }
