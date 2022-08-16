@@ -2,19 +2,14 @@ import clsx from 'clsx';
 import { useEffect } from 'react';
 
 // Stores
-import {
-  SharedState,
-  useSharedStore,
-} from '../../../../shared/stores/use-shared-store.hook';
+import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook';
 
 // Styles
 import styles from './About.module.scss';
 
 export const About = () => {
   // Settings store state
-  const [setPageTitle] = useSharedStore((state: SharedState) => [
-    state.setPageTitle,
-  ]);
+  const [setPageTitle] = useSharedStore((state) => [state.setPageTitle]);
 
   // Set page title on component mount
   useEffect(() => {

@@ -10,10 +10,7 @@ import { HeroIcon } from '../../ui/HeroIcon/HeroIcon';
 import { HeroIconButton } from '../../ui/HeroIconButton/HeroIconButton';
 
 // Stores
-import {
-  SharedState,
-  useSharedStore,
-} from '../../stores/use-shared-store.hook';
+import { useSharedStore } from '../../stores/use-shared-store.hook';
 
 // Styles
 import styles from './Search.module.scss';
@@ -25,7 +22,7 @@ export const Search = () => {
   const [value, setValue] = useState<string>('');
 
   // User store state
-  const [search, setSearch] = useSharedStore((state: SharedState) => [
+  const [search, setSearch] = useSharedStore((state) => [
     state.search,
     state.setSearch,
   ]);

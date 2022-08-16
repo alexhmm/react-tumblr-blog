@@ -75,5 +75,14 @@ export const usePosts = () => {
       });
   };
 
-  return { postsGet, postByIdGet };
+  /**
+   * Replace whitespaces with minus characters for post detail links.
+   * @param summary Post summary
+   * @returns Replaced whitespaces post summary
+   */
+  const postDetailLinkStrReplace = (summary: string): string => {
+    return summary.replace(/\s/g, '-');
+  };
+
+  return { postsGet, postByIdGet, postDetailLinkStrReplace };
 };

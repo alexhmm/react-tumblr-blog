@@ -1,8 +1,7 @@
 import create, { State } from 'zustand';
 
 // Models
-import { PageTitle } from '../models/shared.types';
-import { Theme } from '../models/theme.enum';
+import { PageTitle, Theme } from '../models/shared.types';
 
 export interface SharedState extends State {
   pageTitle: PageTitle | null;

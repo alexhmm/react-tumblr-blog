@@ -8,17 +8,14 @@ import { Search } from './shared/components/Search/Search';
 import { Title } from './shared/components/Title/Title';
 
 // Hooks
-import { useSharedUtils } from './shared/hooks/use-shared-utils.hook';
+import { useShared } from './shared/hooks/use-shared.hook';
 import { useTheme } from './shared/hooks/use-theme.hook';
 
 // Router
 import { AppRouter } from './shared/router/AppRouter';
 
 // Stores
-import {
-  SharedState,
-  useSharedStore,
-} from './shared/stores/use-shared-store.hook';
+import { useSharedStore } from './shared/stores/use-shared-store.hook';
 
 // Styles
 import './App.scss';
@@ -27,11 +24,11 @@ import './App.scss';
 import './shared/utils/fa';
 
 function App() {
-  const { appMetaDataSet } = useSharedUtils();
+  const { appMetaDataSet } = useShared();
   const { themeGet } = useTheme();
 
   // Shared store state
-  const [theme] = useSharedStore((state: SharedState) => [state.theme]);
+  const [theme] = useSharedStore((state) => [state.theme]);
 
   // Set meta data on application mount
   useEffect(() => {

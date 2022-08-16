@@ -1,13 +1,12 @@
 // Models
-import { MenuExternalLink } from '../models/shared.types';
+import { MenuExternalLink, Theme } from '../models/shared.types';
 
-// Storess
-import { SharedState, useSharedStore } from '../stores/use-shared-store.hook';
-import { Theme } from '../models/theme.enum';
+// Stores
+import { useSharedStore } from '../stores/use-shared-store.hook';
 
-export const useSharedUtils = () => {
+export const useShared = () => {
   // Shared store state
-  const [theme] = useSharedStore((state: SharedState) => [state.theme]);
+  const [theme] = useSharedStore((state) => [state.theme]);
 
   /**
    * Sets application header meta data.

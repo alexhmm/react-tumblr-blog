@@ -11,11 +11,8 @@ import { Post } from '../../components/Post/Post';
 import { usePosts } from '../../hooks/use-posts.hook';
 
 // Stores
-import { PostsState, usePostsStore } from '../../stores/use-posts.store';
-import {
-  SharedState,
-  useSharedStore,
-} from '../../../../shared/stores/use-shared-store.hook';
+import { usePostsStore } from '../../stores/use-posts.store';
+import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook';
 
 // Styles
 import styles from './Posts.module.scss';
@@ -41,7 +38,7 @@ export const Posts = () => {
     setPostElements,
     setPosts,
     setTag,
-  ] = usePostsStore((state: PostsState) => [
+  ] = usePostsStore((state) => [
     state.limit,
     state.loading,
     state.postElements,
@@ -56,9 +53,7 @@ export const Posts = () => {
   ]);
 
   // Settings store state
-  const [setPageTitle] = useSharedStore((state: SharedState) => [
-    state.setPageTitle,
-  ]);
+  const [setPageTitle] = useSharedStore((state) => [state.setPageTitle]);
 
   // Reset post (detail)
   useEffect(() => {

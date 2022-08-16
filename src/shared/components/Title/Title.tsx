@@ -10,10 +10,7 @@ import { IconTextButton } from '../../ui/IconTextButton/IconTextButton';
 import { useBreakpoints } from '../../hooks/use-breakpoints.hook';
 
 // Stores
-import {
-  SharedState,
-  useSharedStore,
-} from '../../stores/use-shared-store.hook';
+import { useSharedStore } from '../../stores/use-shared-store.hook';
 
 // Styles
 import styles from './Title.module.scss';
@@ -23,7 +20,7 @@ export const Title = () => {
   const navigate = useNavigate();
 
   // Shared store state
-  const [pageTitle, title] = useSharedStore((state: SharedState) => [
+  const [pageTitle, title] = useSharedStore((state) => [
     state.pageTitle,
     state.title,
   ]);

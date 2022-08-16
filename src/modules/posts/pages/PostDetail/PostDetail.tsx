@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { HashtagIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import * as dayjs from 'dayjs';
@@ -18,17 +18,13 @@ import { usePosts } from '../../hooks/use-posts.hook';
 import { Post as IPost } from '../../models/posts.types';
 
 // Stores
-import {
-  SharedState,
-  useSharedStore,
-} from '../../../../shared/stores/use-shared-store.hook';
+import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook';
 
 // Styles
 import styles from './PostDetail.module.scss';
 
 export const PostDetail = () => {
   const { lgDown, lgUp } = useBreakpoints();
-  const navigate = useNavigate();
   const { id } = useParams();
   const { postByIdGet } = usePosts();
 
@@ -40,9 +36,7 @@ export const PostDetail = () => {
   const [touch, setTouch] = useState<boolean>(false);
 
   // Shared store state
-  const [setPageTitle] = useSharedStore((state: SharedState) => [
-    state.setPageTitle,
-  ]);
+  const [setPageTitle] = useSharedStore((state) => [state.setPageTitle]);
 
   // Effect on component mount
   useEffect(() => {
@@ -125,15 +119,16 @@ export const PostDetail = () => {
                 {post.tags.map((tag) => {
                   if (!process.env.REACT_APP_TAGS_EXCLUDE?.includes(tag)) {
                     return (
-                      <HeroIconTextButton
-                        key={tag}
-                        classes={styles['post-detail-content-data-tags-item']}
-                        icon={<HashtagIcon />}
-                        iconSize={16}
-                        onClick={() => navigate(`/tagged/${tag}`)}
-                      >
-                        {tag}
-                      </HeroIconTextButton>
+                      <Link to={`/tagged/${tag}`}>
+                        <HeroIconTextButton
+                          key={tag}
+                          classes={styles['post-detail-content-data-tags-item']}
+                          icon={<HashtagIcon />}
+                          iconSize={16}
+                        >
+                          {tag}
+                        </HeroIconTextButton>
+                      </Link>
                     );
                   }
                   return null;

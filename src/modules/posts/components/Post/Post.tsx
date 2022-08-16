@@ -9,6 +9,7 @@ import { HeroIcon } from '../../../../shared/ui/HeroIcon/HeroIcon';
 
 // Hooks
 import { useBreakpoints } from '../../../../shared/hooks/use-breakpoints.hook';
+import { usePosts } from '../../hooks/use-posts.hook';
 
 // Models
 import { Post as IPost } from '../../models/posts.types';
@@ -22,6 +23,7 @@ type PostProps = {
 
 export const Post = (props: PostProps) => {
   const { smDown, xxxxlDown } = useBreakpoints();
+  const { postDetailLinkStrReplace } = usePosts();
 
   // Component state
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -59,7 +61,10 @@ export const Post = (props: PostProps) => {
       }}
     >
       <Link
-        to={`/post/${props.post.id_string}`}
+        to={`/post/${props.post.id_string}${
+          props.post.summary &&
+          `/${postDetailLinkStrReplace(props.post.summary)}`
+        }`}
         className={styles['post-overlay']}
         id="post-overlay"
       >

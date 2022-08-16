@@ -1,10 +1,10 @@
 import { createTheme, Theme } from '@mui/material/styles';
 
 // Models
-import { Theme as ETheme } from '../models/theme.enum';
+import { Theme as ETheme } from '../models/shared.types';
 
 // Stores
-import { SharedState, useSharedStore } from '../stores/use-shared-store.hook';
+import { useSharedStore } from '../stores/use-shared-store.hook';
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -63,7 +63,7 @@ export const themeLight = createTheme({
 
 export const useTheme = () => {
   // Shared store state
-  const [theme] = useSharedStore((state: SharedState) => [state.theme]);
+  const [theme] = useSharedStore((state) => [state.theme]);
 
   /**
    * Returns active mui theme.

@@ -1,5 +1,10 @@
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';
 
+export enum Theme {
+  Dark = 'Dark',
+  Light = 'Light',
+}
+
 export interface MenuLink {
   title: string;
   to: string;

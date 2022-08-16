@@ -10,29 +10,25 @@ import { HeroIconButton } from '../../ui/HeroIconButton/HeroIconButton';
 import { TextButton } from '../../ui/TextButton/TextButton';
 
 // Hooks
-import { useSharedUtils } from '../../hooks/use-shared-utils.hook';
+import { useShared } from '../../hooks/use-shared.hook';
 
 // Models
-import { MenuExternalLink } from '../../models/shared.types';
-import { Theme } from '../../models/theme.enum';
+import { MenuExternalLink, Theme } from '../../models/shared.types';
 
 // Stores
-import {
-  SharedState,
-  useSharedStore,
-} from '../../stores/use-shared-store.hook';
+import { useSharedStore } from '../../stores/use-shared-store.hook';
 
 // Styles
 import styles from './Menu.module.scss';
 
 export const Menu = () => {
-  const { menuExternalLinksGet } = useSharedUtils();
+  const { menuExternalLinksGet } = useShared();
 
   // Component state
   // const [searchValue, setSearchValue] = useState<string>('');
 
   // User store state
-  const [theme, setSearch, setTheme] = useSharedStore((state: SharedState) => [
+  const [theme, setSearch, setTheme] = useSharedStore((state) => [
     state.theme,
     state.setSearch,
     state.setTheme,
