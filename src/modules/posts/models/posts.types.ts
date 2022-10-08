@@ -1,5 +1,33 @@
 import { Info } from '../../../shared/models/tumblr.types';
 
+export interface Comment {
+  id: number;
+  blog_uuid: string;
+  blog_name: string;
+  reply_text: string;
+  timestamp: number;
+}
+
+/**
+ * Tumblr note interface.
+ */
+export interface Note {
+  avatar_shape: string;
+  blog_name: string;
+  blog_uuid: string;
+  blog_url: string;
+  can_block?: boolean;
+  followed: boolean;
+  formatting?: any[];
+  reply_text?: string;
+  timestamp: number;
+  type: string;
+}
+
+export interface NotesResponse {
+  notes: Note[];
+}
+
 /**
  * Tumblr post interface.
  */

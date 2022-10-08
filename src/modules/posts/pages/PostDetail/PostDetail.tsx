@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { Box, Divider } from '@mui/material';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { HashtagIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
@@ -15,7 +15,11 @@ import { useBreakpoints } from '../../../../shared/hooks/use-breakpoints.hook';
 import { usePosts } from '../../hooks/use-posts.hook';
 
 // Models
-import { Post as IPost } from '../../models/posts.types';
+import {
+  Comment as IComment,
+  Note,
+  Post as IPost,
+} from '../../models/posts.types';
 
 // Stores
 import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook';
@@ -23,12 +27,41 @@ import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook'
 // Styles
 import styles from './PostDetail.module.scss';
 
+type CommentProps = {
+  comment: IComment;
+};
+
+const Comment = (props: CommentProps) => {
+  // Effect on component mount
+  useEffect(() => {
+    dayjs.extend(LocalizedFormat);
+  }, []);
+
+  return (
+    <div className={styles['comment']}>
+      <div className={styles['comment-header']}>
+        <div className={styles['comment-header-name']}>
+          {props.comment.blog_name}
+        </div>
+        <Box
+          className={styles['comment-header-timestamp']}
+          sx={{ color: 'text.secondary' }}
+        >
+          {dayjs.unix(props.comment.timestamp).format('LLL')}
+        </Box>
+      </div>
+      <div className={styles['comment-text']}>{props.comment.reply_text}</div>
+    </div>
+  );
+};
+
 export const PostDetail = () => {
   const { lgDown, lgUp } = useBreakpoints();
   const { id } = useParams();
-  const { postByIdGet } = usePosts();
+  const { notesGet, postByIdGet } = usePosts();
 
   // Component state
+  const [comments, setComments] = useState<IComment[]>([]);
   const [date, setDate] = useState<string | null>(null);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [post, setPost] = useState<IPost | undefined>(undefined);
@@ -75,8 +108,45 @@ export const PostDetail = () => {
     if (post) {
       // Set post date
       setDate(dayjs.unix(post.timestamp).format('LL'));
+
+      // Fetch notes if note count is bigger than 0
+      const fetchNotes = async () => {
+        if (post.id_string) {
+          const notesResponse = await notesGet(post.id_string);
+          onNotesResponse(notesResponse.notes);
+        }
+      };
+
+      if (post.note_count > 0) {
+        fetchNotes();
+      }
     }
+    // eslint-disable-next-line
   }, [post]);
+
+  // ######### //
+  // CALLBACKS //
+  // ######### //
+
+  /**
+   * Handler to display comments on notes response.
+   * @param notes Note array
+   */
+  const onNotesResponse = useCallback((notes: Note[]) => {
+    const cmmnts: IComment[] = [];
+    for (const note of notes) {
+      note.reply_text &&
+        note.type === 'reply' &&
+        cmmnts.push({
+          id: notes.indexOf(note),
+          blog_name: note.blog_name,
+          blog_uuid: note.blog_uuid,
+          reply_text: note.reply_text,
+          timestamp: note.timestamp,
+        });
+    }
+    setComments(cmmnts);
+  }, []);
 
   return (
     <>
@@ -112,14 +182,14 @@ export const PostDetail = () => {
               {date && (
                 <div className={styles['post-detail-content-data-header-date']}>
                   <span>{date}</span>
-                  <span>{`${post.note_count} notes`}</span>
+                  <span>{`${post.note_count} likes`}</span>
                 </div>
               )}
               <div className={styles['post-detail-content-data-tags']}>
-                {post.tags.map((tag) => {
+                {post.tags.map((tag, index: number) => {
                   if (!process.env.REACT_APP_TAGS_EXCLUDE?.includes(tag)) {
                     return (
-                      <Link to={`/tagged/${tag}`}>
+                      <Link key={index} to={`/tagged/${tag}`}>
                         <HeroIconTextButton
                           key={tag}
                           classes={styles['post-detail-content-data-tags-item']}
@@ -135,6 +205,16 @@ export const PostDetail = () => {
                 })}
               </div>
             </Box>
+            {loaded && comments.length > 0 && (
+              <>
+                <div className={styles['post-detail-content-comments']}>
+                  <Divider className="mb-4" />
+                  {comments.map((comment, index: number) => (
+                    <Comment key={index} comment={comment} />
+                  ))}
+                </div>
+              </>
+            )}
           </Box>
         </div>
       )}

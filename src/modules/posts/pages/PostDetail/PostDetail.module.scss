@@ -1,9 +1,32 @@
 @import '../../../../shared/styles/breakpoints.scss';
 
+.comment {
+  @apply flex flex-col w-full;
+  &:not(:last-of-type) {
+    @apply mb-4;
+  }
+  &-header {
+    @apply flex items-center mb-2 text-xs;
+    &-name {
+      @apply font-semibold;
+    }
+    &-timestamp {
+      @apply ml-2;
+    }
+  }
+  &-text {
+    @apply text-sm;
+  }
+}
+
 .post-detail {
   @apply flex flex-col items-center justify-center;
   &-content {
     @apply flex flex-col;
+    &-comments {
+      min-width: calc(100% - 2rem);
+      @apply max-w-fit mt-4 px-4;
+    }
     &-data {
       @apply duration-300 flex flex-col flex-wrap px-4 transition-opacity;
       &-header {
@@ -31,6 +54,9 @@
 @media (min-width: $md) {
   .post-detail {
     &-content {
+      &-comments {
+        @apply min-w-full px-0;
+      }
       &-data {
         @apply px-0;
       }

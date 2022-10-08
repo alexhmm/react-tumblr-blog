@@ -1,9 +1,41 @@
 import { stringify } from 'query-string';
 
 // Models
-import { PostsResponse } from '../models/posts.types';
+import { NotesResponse, PostsResponse } from '../models/posts.types';
 
 export const usePosts = () => {
+  /**
+   * GET Post notes by id.
+   * @param id Post id
+   * @returns NotesResponse
+   */
+  const notesGet = async (id: string): Promise<NotesResponse> => {
+    const params = {
+      api_key: process.env.REACT_APP_API_KEY,
+      id,
+      mode: 'conversation',
+    };
+
+    const url = `https://api.tumblr.com/v2/blog/${
+      process.env.REACT_APP_TUMBLR_NAME
+    }.tumblr.com/notes/?${stringify(params)}`;
+
+    return fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        return data.response;
+      })
+      .catch((error) => {
+        console.error('Error fetching notes:', error);
+        return null;
+      });
+  };
+
   /**
    * GET Posts.
    * @param limit Limit
@@ -81,8 +113,14 @@ export const usePosts = () => {
    * @returns Replaced whitespaces post summary
    */
   const postDetailLinkStrReplace = (summary: string): string => {
-    return summary.replace(/\s/g, '-');
+    // eslint-disable-next-line
+    return summary.replace(/\s+|[,\/]/g, '-');
   };
 
-  return { postsGet, postByIdGet, postDetailLinkStrReplace };
+  return {
+    notesGet,
+    postsGet,
+    postByIdGet,
+    postDetailLinkStrReplace,
+  };
 };
