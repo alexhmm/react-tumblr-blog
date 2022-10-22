@@ -65,48 +65,57 @@ export const Post = (props: PostProps) => {
           props.post.summary &&
           `/${postDetailLinkStrReplace(props.post.summary)}`
         }`}
-        className={styles['post-overlay']}
+        className={clsx(
+          styles['post-overlay'],
+          process.env.REACT_APP_VIEW_TYPE === 'Gallery'
+            ? styles['post-gallery-overlay']
+            : styles['post-list-overlay']
+        )}
         id="post-overlay"
       >
-        <div className={styles['post-overlay-data']}>
+        <div
+          className={clsx(
+            styles['post-overlay-data'],
+            process.env.REACT_APP_VIEW_TYPE === 'Gallery'
+              ? styles['post-gallery-overlay-data']
+              : styles['post-list-overlay-data']
+          )}
+        >
           {props.post.summary && props.post.summary.length > 0 ? (
-            <Box
+            <div
               className={clsx(
                 styles['post-overlay-data-title'],
                 styles['post-overlay-data-card']
               )}
-              sx={{
-                backgroundColor: 'background.default',
-                color: 'text.primary',
-              }}
             >
-              {props.post.summary.toUpperCase()}
-            </Box>
+              {props.post.summary}
+            </div>
           ) : (
             <div></div>
           )}
-          <Box
-            className={clsx(
-              styles['post-overlay-data-notes'],
-              styles['post-overlay-data-card'],
-              process.env.REACT_APP_VIEW_TYPE === 'Gallery'
-                ? styles['post-gallery-overlay-notes']
-                : styles['post-list-overlay-notes']
-            )}
-            sx={{
-              backgroundColor: 'background.default',
-              color: 'text.primary',
-            }}
-          >
-            <HeroIcon classes={styles['post-overlay-data-notes-icon']}>
-              <HeartIcon />
-            </HeroIcon>
-            <div>{props.post.note_count}</div>
-          </Box>
+          {props.post.note_count > 0 && (
+            <div
+              className={clsx(
+                styles['post-overlay-data-notes'],
+                styles['post-overlay-data-card'],
+                process.env.REACT_APP_VIEW_TYPE === 'Gallery'
+                  ? styles['post-gallery-overlay-notes']
+                  : styles['post-list-overlay-notes']
+              )}
+            >
+              <HeroIcon
+                classes={styles['post-overlay-data-notes-icon']}
+                color="white"
+              >
+                <HeartIcon />
+              </HeroIcon>
+              <div>{props.post.note_count}</div>
+            </div>
+          )}
         </div>
       </Link>
       <img
-        alt={props.post.caption}
+        alt={props.post.summary}
         className={
           process.env.REACT_APP_VIEW_TYPE === 'Gallery'
             ? styles['post-gallery-image']

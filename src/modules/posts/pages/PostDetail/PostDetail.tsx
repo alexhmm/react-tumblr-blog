@@ -2,11 +2,13 @@ import { Box, Divider } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { HashtagIcon } from '@heroicons/react/outline';
+import { HeartIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import * as dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 
 // Components
+import { HeroIcon } from '../../../../shared/ui/HeroIcon/HeroIcon';
 import { HeroIconTextButton } from '../../../../shared/ui/HeroIconTextButton/HeroIconTextButton';
 import { Zoomable } from '../../../../shared/ui/Zoomable/Zoomtable';
 
@@ -52,6 +54,25 @@ const Comment = (props: CommentProps) => {
       </div>
       <div className={styles['comment-text']}>{props.comment.reply_text}</div>
     </div>
+  );
+};
+
+type TagProps = {
+  tag: string;
+};
+
+const Tag = (props: TagProps) => {
+  return (
+    <Link to={`/tagged/${props.tag}`}>
+      <HeroIconTextButton
+        key={props.tag}
+        classes={styles['tag']}
+        icon={<HashtagIcon />}
+        iconSize={16}
+      >
+        {props.tag}
+      </HeroIconTextButton>
+    </Link>
   );
 };
 
@@ -180,26 +201,35 @@ export const PostDetail = () => {
               }}
             >
               {date && (
-                <div className={styles['post-detail-content-data-header-date']}>
-                  <span>{date}</span>
-                  <span>{`${post.note_count} likes`}</span>
+                <div className={styles['post-detail-content-data-header']}>
+                  <Box
+                    className={styles['post-detail-content-data-header-date']}
+                    sx={{ color: 'text.secondary' }}
+                  >
+                    {date}
+                  </Box>
+                  {post.note_count > 0 && (
+                    <div
+                      className={
+                        styles['post-detail-content-data-header-notes']
+                      }
+                    >
+                      <HeroIcon
+                        classes={
+                          styles['post-detail-content-data-header-notes-icon']
+                        }
+                      >
+                        <HeartIcon />
+                      </HeroIcon>
+                      <div>{post.note_count}</div>
+                    </div>
+                  )}
                 </div>
               )}
               <div className={styles['post-detail-content-data-tags']}>
                 {post.tags.map((tag, index: number) => {
                   if (!process.env.REACT_APP_TAGS_EXCLUDE?.includes(tag)) {
-                    return (
-                      <Link key={index} to={`/tagged/${tag}`}>
-                        <HeroIconTextButton
-                          key={tag}
-                          classes={styles['post-detail-content-data-tags-item']}
-                          icon={<HashtagIcon />}
-                          iconSize={16}
-                        >
-                          {tag}
-                        </HeroIconTextButton>
-                      </Link>
-                    );
+                    return <Tag key={index} tag={tag} />;
                   }
                   return null;
                 })}

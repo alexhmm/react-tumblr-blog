@@ -30,16 +30,19 @@
     &-data {
       @apply duration-300 flex flex-col flex-wrap px-4 transition-opacity;
       &-header {
-        @apply flex justify-between mb-2 mt-1;
+        @apply flex justify-between items-center my-2;
         &-date {
-          @apply flex justify-between items-center my-2;
+          @apply text-sm;
+        }
+        &-notes {
+          @apply flex items-center ml-4 shrink-0;
+          &-icon {
+            @apply flex items-center mr-2;
+          }
         }
       }
       &-tags {
         @apply flex flex-wrap max-w-fit;
-        &-item {
-          @apply mb-1.5 mr-1.5;
-        }
       }
     }
     &-src {
@@ -49,6 +52,10 @@
       }
     }
   }
+}
+
+.tag {
+  @apply mb-1.5 mr-1.5;
 }
 
 @media (min-width: $md) {
