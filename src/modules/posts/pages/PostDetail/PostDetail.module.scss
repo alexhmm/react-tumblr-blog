@@ -1,24 +1,5 @@
 @import '../../../../shared/styles/breakpoints.scss';
 
-.comment {
-  @apply flex flex-col w-full;
-  &:not(:last-of-type) {
-    @apply mb-4;
-  }
-  &-header {
-    @apply flex items-center mb-2 text-xs;
-    &-name {
-      @apply font-semibold;
-    }
-    &-timestamp {
-      @apply ml-2;
-    }
-  }
-  &-text {
-    @apply text-sm;
-  }
-}
-
 .post-detail {
   @apply flex flex-col items-center justify-center;
   &-content {

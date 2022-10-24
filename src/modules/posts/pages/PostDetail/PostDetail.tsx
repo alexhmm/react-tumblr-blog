@@ -1,5 +1,13 @@
 import { Box, Divider } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
+import {
+  Fragment,
+  lazy,
+  memo,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { HashtagIcon } from '@heroicons/react/outline';
 import { HeartIcon } from '@heroicons/react/solid';
@@ -10,6 +18,7 @@ import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 // Components
 import { HeroIcon } from '../../../../shared/ui/HeroIcon/HeroIcon';
 import { HeroIconTextButton } from '../../../../shared/ui/HeroIconTextButton/HeroIconTextButton';
+import { Loader } from '../../../../shared/ui/Loader/Loader';
 import { Zoomable } from '../../../../shared/ui/Zoomable/Zoomtable';
 
 // Hooks
@@ -29,33 +38,8 @@ import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook'
 // Styles
 import styles from './PostDetail.module.scss';
 
-type CommentProps = {
-  comment: IComment;
-};
-
-const Comment = (props: CommentProps) => {
-  // Effect on component mount
-  useEffect(() => {
-    dayjs.extend(LocalizedFormat);
-  }, []);
-
-  return (
-    <div className={styles['comment']}>
-      <div className={styles['comment-header']}>
-        <div className={styles['comment-header-name']}>
-          {props.comment.blog_name}
-        </div>
-        <Box
-          className={styles['comment-header-timestamp']}
-          sx={{ color: 'text.secondary' }}
-        >
-          {dayjs.unix(props.comment.timestamp).format('LLL')}
-        </Box>
-      </div>
-      <div className={styles['comment-text']}>{props.comment.reply_text}</div>
-    </div>
-  );
-};
+// Lazy-load components
+const Comment = lazy(() => import('../../components/Comment/Comment'));
 
 type TagProps = {
   tag: string;
@@ -76,7 +60,7 @@ const Tag = (props: TagProps) => {
   );
 };
 
-export const PostDetail = () => {
+const PostDetail = () => {
   const { lgDown, lgUp } = useBreakpoints();
   const { id } = useParams();
   const { notesGet, postByIdGet } = usePosts();
@@ -240,7 +224,11 @@ export const PostDetail = () => {
                 <div className={styles['post-detail-content-comments']}>
                   <Divider className="mb-4" />
                   {comments.map((comment, index: number) => (
-                    <Comment key={index} comment={comment} />
+                    <Fragment key={index}>
+                      <Suspense fallback={<Loader />}>
+                        <Comment key={index} comment={comment} />
+                      </Suspense>
+                    </Fragment>
                   ))}
                 </div>
               </>
@@ -251,3 +239,5 @@ export const PostDetail = () => {
     </>
   );
 };
+
+export default memo(PostDetail);

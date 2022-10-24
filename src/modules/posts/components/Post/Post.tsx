@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { HeartIcon } from '@heroicons/react/solid';
@@ -21,7 +21,7 @@ type PostProps = {
   post: IPost;
 };
 
-export const Post = (props: PostProps) => {
+const Post = (props: PostProps) => {
   const { smDown, xxxxlDown } = useBreakpoints();
   const { postDetailLinkStrReplace } = usePosts();
 
@@ -54,7 +54,7 @@ export const Post = (props: PostProps) => {
           : styles['post-list']
       )}
       sx={{
-        ':hover #post-overlay': {
+        '&:hover .post-overlay-id': {
           opacity: 1,
         },
         opacity: loaded ? 1 : 0,
@@ -69,9 +69,9 @@ export const Post = (props: PostProps) => {
           styles['post-overlay'],
           process.env.REACT_APP_VIEW_TYPE === 'Gallery'
             ? styles['post-gallery-overlay']
-            : styles['post-list-overlay']
+            : styles['post-list-overlay'],
+          'post-overlay-id'
         )}
-        id="post-overlay"
       >
         <div
           className={clsx(
@@ -127,3 +127,5 @@ export const Post = (props: PostProps) => {
     </Box>
   );
 };
+
+export default memo(Post);

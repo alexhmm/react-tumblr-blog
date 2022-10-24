@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { useEffect } from 'react';
+import clsx from 'clsx';
 
 // Stores
 import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook';
@@ -7,7 +7,7 @@ import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook'
 // Styles
 import styles from './About.module.scss';
 
-export const About = () => {
+const About = () => {
   // Settings store state
   const [setPageTitle] = useSharedStore((state) => [state.setPageTitle]);
 
@@ -28,3 +28,5 @@ export const About = () => {
     </>
   );
 };
+
+export default About;

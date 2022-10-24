@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box } from '@mui/material';
+import clsx from 'clsx';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 // Components
 import { Loader } from '../../../../shared/ui/Loader/Loader';
-import { Post } from '../../components/Post/Post';
+import Post from '../../components/Post/Post';
 
 // Hooks
 import { usePosts } from '../../hooks/use-posts.hook';
@@ -16,9 +17,8 @@ import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook'
 
 // Styles
 import styles from './Posts.module.scss';
-import clsx from 'clsx';
 
-export const Posts = () => {
+const Posts = () => {
   const { tagged } = useParams();
   const { postsGet } = usePosts();
 
@@ -200,3 +200,5 @@ export const Posts = () => {
     </InfiniteScroll>
   );
 };
+
+export default Posts;

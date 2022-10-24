@@ -83,7 +83,7 @@ export const Search = () => {
       }}
     >
       <div className={styles['search-close']}>
-        <HeroIconButton onClick={() => setSearch(false)}>
+        <HeroIconButton ariaLabel="Search" onClick={() => setSearch(false)}>
           <XIcon />
         </HeroIconButton>
       </div>
@@ -95,6 +95,7 @@ export const Search = () => {
           value.length > 0 && (
             <InputAdornment position="end">
               <HeroIconButton
+                ariaLabel="Reset input"
                 classes={styles['search-text-field-icon']}
                 onClick={() => setValue('')}
               >

@@ -100,13 +100,13 @@ export const Menu = () => {
   return (
     <>
       <div className={styles['menu-buttons']}>
-        <HeroIconButton onClick={() => setSearch(true)}>
+        <HeroIconButton ariaLabel="Search" onClick={() => setSearch(true)}>
           <SearchIcon />
         </HeroIconButton>
-        <HeroIconButton onClick={onThemeToggle}>
+        <HeroIconButton ariaLabel="Toggle theme" onClick={onThemeToggle}>
           {theme === Theme.Light ? <MoonIcon /> : <SunIcon />}
         </HeroIconButton>
-        <HeroIconButton onClick={onMenuOpen}>
+        <HeroIconButton ariaLabel="Menu" onClick={onMenuOpen}>
           <MenuAlt3Icon />
         </HeroIconButton>
       </div>
@@ -123,6 +123,7 @@ export const Menu = () => {
         >
           <div className={styles['menu-content-top']}>
             <HeroIconButton
+              ariaLabel="Close menu"
               classes={styles['menu-content-top-close']}
               onClick={onMenuClose}
             >
