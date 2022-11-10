@@ -1,13 +1,5 @@
 import { Box, Divider } from '@mui/material';
-import {
-  Fragment,
-  lazy,
-  memo,
-  Suspense,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { HashtagIcon } from '@heroicons/react/outline';
 import { HeartIcon } from '@heroicons/react/solid';
@@ -16,9 +8,9 @@ import * as dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 
 // Components
+import Comment from '../../components/Comment/Comment';
 import { HeroIcon } from '../../../../shared/ui/HeroIcon/HeroIcon';
 import { HeroIconTextButton } from '../../../../shared/ui/HeroIconTextButton/HeroIconTextButton';
-import { Loader } from '../../../../shared/ui/Loader/Loader';
 import { Zoomable } from '../../../../shared/ui/Zoomable/Zoomtable';
 
 // Hooks
@@ -37,9 +29,6 @@ import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook'
 
 // Styles
 import styles from './PostDetail.module.scss';
-
-// Lazy-load components
-const Comment = lazy(() => import('../../components/Comment/Comment'));
 
 type TagProps = {
   tag: string;
@@ -224,11 +213,7 @@ const PostDetail = () => {
                 <div className={styles['post-detail-content-comments']}>
                   <Divider className="mb-4" />
                   {comments.map((comment, index: number) => (
-                    <Fragment key={index}>
-                      <Suspense fallback={<Loader />}>
-                        <Comment key={index} comment={comment} />
-                      </Suspense>
-                    </Fragment>
+                    <Comment key={index} comment={comment} />
                   ))}
                 </div>
               </>

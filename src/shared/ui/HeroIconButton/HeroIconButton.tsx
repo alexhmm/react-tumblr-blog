@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import styles from './HeroIconButton.module.scss';
 
 type HeroIconButtonProps = {
-  ariaLabel: string;
+  arlabel: string;
   children?: ReactNode;
   classes?: string;
   disabled?: boolean;
@@ -28,7 +28,7 @@ export const HeroIconButton = forwardRef<
   return (
     <Button
       {...rest}
-      aria-label={props.ariaLabel}
+      aria-label={props.arlabel}
       className={clsx(styles['icon-button'], classes && classes)}
       color="inherit"
       disabled={disabled && disabled}
