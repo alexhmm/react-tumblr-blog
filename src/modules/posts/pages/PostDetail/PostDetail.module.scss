@@ -1,5 +1,3 @@
-@import '../../../../shared/styles/breakpoints.scss';
-
 .post-detail {
   @apply flex flex-col items-center justify-center;
   &-content {
@@ -7,9 +5,11 @@
     &-comments {
       min-width: calc(100% - 2rem);
       @apply max-w-fit mt-4 px-4;
+      @apply xl:min-w-full xl:px-0;
     }
     &-data {
       @apply duration-300 flex flex-col flex-wrap px-4 transition-opacity;
+      @apply xl:px-0;
       &-header {
         @apply flex justify-between items-center my-2;
         &-date {
@@ -37,17 +37,4 @@
 
 .tag {
   @apply mb-1.5 mr-1.5;
-}
-
-@media (min-width: $xl) {
-  .post-detail {
-    &-content {
-      &-comments {
-        @apply min-w-full px-0;
-      }
-      &-data {
-        @apply px-0;
-      }
-    }
-  }
 }

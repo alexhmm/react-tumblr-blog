@@ -1,5 +1,3 @@
-@import '../../../../shared/styles/breakpoints.scss';
-
 .post {
   @apply box-border duration-300 flex relative transition-opacity;
   &-overlay {
@@ -24,6 +22,10 @@
 
 .post-gallery {
   @apply w-[calc(50%-0.5rem)] m-1;
+  @apply sm:w-[calc(50%-1rem)] sm:m-2;
+  @apply lg:w-[calc(33.3333%-1rem)];
+  @apply 3xl:w-[calc(25%-2rem)] 3xl:m-4;
+  @apply 4xl:w-[calc(20%-2rem)];
   &-image {
     @apply aspect-[3/2] object-cover w-full;
   }
@@ -38,12 +40,14 @@
     }
     &-notes {
       @apply hidden;
+      @apply sm:flex;
     }
   }
 }
 
 .post-list {
   @apply mb-8;
+  @apply lg:mb-16;
   &-image {
     @apply max-h-[85vh] max-w-full;
   }
@@ -55,51 +59,10 @@
     );
     &-data {
       @apply w-[calc(100%-2rem)] bottom-4 left-4;
+      @apply 2xl:w-[calc(100%-4rem)] 2xl:bottom-8 2xl:left-8;
     }
     &-notes {
       @apply flex;
     }
-  }
-}
-
-@media (min-width: $sm) {
-  .post-gallery {
-    &-overlay {
-      &-notes {
-        @apply flex;
-      }
-    }
-  }
-}
-
-@media (min-width: $lg) {
-  .post-gallery {
-    @apply w-[calc(33.3333%-1rem)] m-2;
-  }
-
-  .post-list {
-    @apply mb-16;
-  }
-}
-
-@media (min-width: $xxl) {
-  .post-list {
-    &-overlay {
-      &-data {
-        @apply w-[calc(100%-4rem)] bottom-8 left-8;
-      }
-    }
-  }
-}
-
-@media (min-width: $xxxl) {
-  .post-gallery {
-    @apply w-[calc(25%-2rem)] m-4;
-  }
-}
-
-@media (min-width: $xxxxl) {
-  .post-gallery {
-    width: calc(20% - 2rem);
   }
 }

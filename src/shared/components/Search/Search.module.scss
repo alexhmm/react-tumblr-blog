@@ -1,33 +1,14 @@
-@import '../../../shared/styles/breakpoints.scss';
-
 .search {
   @apply duration-300 fixed h-screen hidden items-center justify-center left-0 opacity-0 p-4 top-0 transition-opacity w-screen z-40;
   &-close {
     @apply flex fixed h-9 items-center right-4 top-4 z-20;
+    @apply sm:right-8 sm:top-8;
   }
   &-text-field {
     @apply py-1 text-lg w-full;
+    @apply sm:w-[480px] lg:py-2 lg:text-xl;
     &-icon {
       @apply flex items-center justify-center p-1;
-    }
-  }
-}
-
-@media (min-width: $sm) {
-  .search {
-    &-close {
-      @apply right-8 top-8;
-    }
-    &-text-field {
-      width: 480px;
-    }
-  }
-}
-
-@media (min-width: $lg) {
-  .search {
-    &-text-field {
-      @apply py-2 text-xl;
     }
   }
 }

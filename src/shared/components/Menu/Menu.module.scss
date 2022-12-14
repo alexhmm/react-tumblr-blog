@@ -6,17 +6,22 @@
 
 .menu-backdrop {
   @apply duration-300 hidden opacity-0 transition-opacity;
+  @apply sm:w-[calc(100%-480px)] sm:absolute sm:block sm:h-screen sm:left-0 sm:top-0;
 }
 
 .menu-buttons {
   @apply flex fixed h-9 items-center right-4 top-4 z-20;
+  @apply sm:right-8 sm:top-8;
+  @apply lg:right-16 lg:top-12;
   & > * {
     @apply ml-4;
+    @apply lg:ml-8;
   }
 }
 
 .menu-content {
   @apply box-border duration-300 fixed flex-col h-screen justify-between p-4 opacity-0 overflow-y-auto right-0 top-0 transition-opacity w-screen z-40;
+  @apply sm:w-[480px] sm:p-8;
   &-bottom {
     @apply flex flex-col;
   }
@@ -48,6 +53,8 @@
 
 .menu-content-top-nav {
   @apply flex flex-col items-center my-8;
+  @apply sm:my-24;
+  @apply lg:my-32;
   &-item {
     -webkit-tap-highlight-color: transparent;
     &:not(:last-of-type) {
@@ -58,41 +65,11 @@
 
 @media (min-width: $sm) {
   .menu-backdrop {
-    @apply absolute block h-screen left-0 top-0 w-[calc(100%-480px)];
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  .menu-buttons {
-    @apply right-8 top-8;
-  }
-
   .menu-content {
-    @apply p-8 w-[480px];
     box-shadow: -5px 0px 5px 0px rgb(0 0 0 / 0.05),
       0 2px 4px -2px rgb(0 0 0 / 0.1);
-  }
-
-  .menu-content-bottom-social-media {
-    @apply flex flex-wrap justify-center my-8;
-    &-item {
-      @apply mb-1 mx-2;
-    }
-  }
-
-  .menu-content-top-nav {
-    @apply my-24;
-  }
-}
-
-@media (min-width: $lg) {
-  .menu-buttons {
-    @apply right-16 top-12;
-    & > * {
-      @apply ml-8;
-    }
-  }
-
-  .menu-content-top-nav {
-    @apply my-32;
   }
 }

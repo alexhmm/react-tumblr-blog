@@ -1,11 +1,11 @@
-@import '../../../../shared/styles/breakpoints.scss';
-
 .posts {
   &-empty {
     @apply flex justify-center text-xl w-full;
+    @apply xl:text-3xl;
   }
   &-loading {
     @apply duration-300 bottom-4 fixed left-1/2 -translate-x-1/2 transition-opacity z-20;
+    @apply xl:bottom-8;
   }
 }
 
@@ -15,15 +15,4 @@
 
 .posts-list {
   @apply flex flex-col items-center;
-}
-
-@media (min-width: $xl) {
-  .posts {
-    &-empty {
-      @apply text-3xl;
-    }
-    &-loading {
-      @apply bottom-8;
-    }
-  }
 }

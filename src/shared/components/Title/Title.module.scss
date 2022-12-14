@@ -2,25 +2,20 @@
 
 .title {
   @apply fixed flex h-9 items-center left-4 top-4 uppercase z-30;
+  @apply sm:left-8 sm:top-8;
+  @apply lg:left-16 lg:top-12;
   &-home {
     @apply border-0 border-b border-solid text-xl;
+    @apply lg:border-b-2 lg:text-2xl;
   }
   &-text {
     @apply max-w-[calc(100vw-32px-180px)] truncate;
   }
 }
 
-@media (min-width: $sm) {
-  .title {
-    @apply left-8 top-8;
-  }
-}
-
 @media (min-width: $lg) {
   .title {
-    @apply left-16 top-12;
     &-home {
-      @apply border-b-2 text-2xl;
       transform: translateY(1px);
     }
   }

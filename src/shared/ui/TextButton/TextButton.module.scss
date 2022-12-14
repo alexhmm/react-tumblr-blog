@@ -1,11 +1,4 @@
-@import '../../styles/breakpoints.scss';
-
 .text-button {
   @apply border-0 border-b border-solid font-normal min-w-0 normal-case p-0 rounded-none;
-}
-
-@media (min-width: $lg) {
-  .text-button {
-    @apply border-b-2;
-  }
+  @apply lg:border-b-2;
 }
