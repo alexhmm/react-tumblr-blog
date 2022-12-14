@@ -5,11 +5,6 @@ import About from '../../modules/info/pages/About/About';
 import PostDetail from '../../modules/posts/pages/PostDetail/PostDetail';
 import Posts from '../../modules/posts/pages/Posts/Posts';
 
-// Components
-import { Loader } from '../ui/Loader/Loader';
-
-// Lazy-load pages
-
 export const AppRouter = () => {
   return (
     <Routes>
