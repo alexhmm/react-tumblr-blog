@@ -22,10 +22,8 @@
 
 .post-gallery {
   @apply w-[calc(50%-0.5rem)] m-1;
-  @apply sm:w-[calc(50%-1rem)] sm:m-2;
-  @apply lg:w-[calc(33.3333%-1rem)];
-  @apply 3xl:w-[calc(25%-2rem)] 3xl:m-4;
-  @apply 4xl:w-[calc(20%-2rem)];
+  @apply sm:w-[calc(50%-1rem)] lg:w-[calc(33.3333%-1rem)] sm:m-2;
+  @apply 3xl:w-[calc(25%-2rem)] 4xl:w-[calc(20%-2rem)] 3xl:m-4;
   &-image {
     @apply aspect-[3/2] object-cover w-full;
   }
