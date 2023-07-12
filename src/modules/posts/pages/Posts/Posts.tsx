@@ -9,10 +9,10 @@ import { Loader } from '../../../../shared/ui/Loader/Loader';
 import Post from '../../components/Post/Post';
 
 // Hooks
-import { usePosts } from '../../hooks/use-posts.hook';
+import { usePosts } from '../../use-posts.hook';
 
 // Stores
-import { usePostsStore } from '../../stores/use-posts.store';
+import { usePostsStore } from '../../use-posts.store';
 import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook';
 
 // Styles
@@ -101,20 +101,18 @@ const Posts = () => {
             i++
           ) {
             // Add posts if photo type
-            if (posts[tagged ? tagged : '/'].posts[i].type === 'photo') {
-              elements.push(
-                <Post key={i} post={posts[tagged ? tagged : '/'].posts[i]} />
+            elements.push(
+              <Post key={i} post={posts[tagged ? tagged : '/'].posts[i]} />
+            );
+            if (postElements[tagged ? tagged : '/']) {
+              // Concat react nodes to existing elements object
+              setPostElements(
+                postElements[tagged ? tagged : '/'].concat(elements),
+                tagged ?? '/'
               );
-              if (postElements[tagged ? tagged : '/']) {
-                // Concat react nodes to existing elements object
-                setPostElements(
-                  postElements[tagged ? tagged : '/'].concat(elements),
-                  tagged ?? '/'
-                );
-              } else {
-                // Insert new post elements object
-                setPostElements(elements, tagged ?? '/');
-              }
+            } else {
+              // Insert new post elements object
+              setPostElements(elements, tagged ?? '/');
             }
             // Set loading to false after last element is rendered
             if (i === posts[tagged ? tagged : '/'].posts.length - 1) {

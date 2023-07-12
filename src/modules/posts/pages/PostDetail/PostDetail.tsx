@@ -15,20 +15,19 @@ import { Zoomable } from '../../../../shared/ui/Zoomable/Zoomtable';
 
 // Hooks
 import { useBreakpoints } from '../../../../shared/hooks/use-breakpoints.hook';
-import { usePosts } from '../../hooks/use-posts.hook';
+import { usePosts } from '../../use-posts.hook';
 
 // Models
-import {
-  Comment as IComment,
-  Note,
-  Post as IPost,
-} from '../../models/posts.types';
+import { Comment as IComment, Note, Post as IPost } from '../../posts.types';
 
 // Stores
 import { useSharedStore } from '../../../../shared/stores/use-shared-store.hook';
 
 // Styles
 import styles from './PostDetail.module.scss';
+
+// Utils
+import { getPostDetailImgSrc } from '../../posts.utils';
 
 type TagProps = {
   tag: string;
@@ -50,7 +49,7 @@ const Tag = (props: TagProps) => {
 };
 
 const PostDetail = () => {
-  const { lgDown, lgUp } = useBreakpoints();
+  const { lgDown } = useBreakpoints();
   const { id } = useParams();
   const { notesGet, postByIdGet } = usePosts();
 
@@ -85,21 +84,18 @@ const PostDetail = () => {
 
   // Responsive image source
   useEffect(() => {
-    if (post) {
-      setPageTitle({
-        document: post.summary.toUpperCase(),
-        text: post.summary.toUpperCase(),
-      });
-      if (lgDown || lgUp) {
-        lgDown && setSrc(post.photos[0]?.alt_sizes[1].url);
-        lgUp && setSrc(post.photos[0]?.alt_sizes[0].url);
-      }
-    }
+    post && setSrc(getPostDetailImgSrc(post, lgDown) ?? '');
     // eslint-disable-next-line
   }, [post, lgDown]);
 
   useEffect(() => {
     if (post) {
+      // Set page title
+      setPageTitle({
+        document: post.summary.toUpperCase(),
+        text: post.summary.toUpperCase(),
+      });
+
       // Set post date
       setDate(dayjs.unix(post.timestamp).format('LL'));
 

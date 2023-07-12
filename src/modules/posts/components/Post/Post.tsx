@@ -9,13 +9,16 @@ import { HeroIcon } from '../../../../shared/ui/HeroIcon/HeroIcon';
 
 // Hooks
 import { useBreakpoints } from '../../../../shared/hooks/use-breakpoints.hook';
-import { usePosts } from '../../hooks/use-posts.hook';
+import { usePosts } from '../../use-posts.hook';
 
 // Models
-import { Post as IPost } from '../../models/posts.types';
+import { Post as IPost } from '../../posts.types';
 
 // Styles
 import styles from './Post.module.scss';
+
+// Utils
+import { getPostImgSrc } from '../../posts.utils';
 
 type PostProps = {
   post: IPost;
@@ -31,14 +34,7 @@ const Post = (props: PostProps) => {
 
   // Responsive image source by view type
   useEffect(() => {
-    if (process.env.REACT_APP_VIEW_TYPE === 'List') {
-      smDown && setSrc(props.post.photos[0]?.alt_sizes[2].url);
-      !smDown && setSrc(props.post.photos[0]?.alt_sizes[0].url);
-    }
-    if (process.env.REACT_APP_VIEW_TYPE === 'Gallery') {
-      xxxxlDown && setSrc(props.post.photos[0]?.alt_sizes[2].url);
-      !xxxxlDown && setSrc(props.post.photos[0]?.alt_sizes[1].url);
-    }
+    setSrc(getPostImgSrc(props.post, smDown, xxxxlDown) ?? '');
   }, [props.post, smDown, xxxxlDown]);
 
   return (

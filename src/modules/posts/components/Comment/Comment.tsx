@@ -4,7 +4,7 @@ import * as dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 
 // Models
-import { Comment as IComment } from '../../models/posts.types';
+import { Comment as IComment } from '../../posts.types';
 
 // Styles
 import styles from './Comment.module.scss';

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import create, { State } from 'zustand';
 
 // Models
-import { Post, PostsResponse } from '../models/posts.types';
+import { Post, PostsResponse } from './posts.types';
 
 export interface PostsState extends State {
   limit: number;

@@ -1,4 +1,4 @@
-import { Info } from '../../../shared/models/tumblr.types';
+import { Info } from '../../shared/models/tumblr.types';
 
 export interface Comment {
   id: number;
@@ -9,7 +9,7 @@ export interface Comment {
 }
 
 /**
- * Tumblr note interface.
+ * Tumblr note interface
  */
 export interface Note {
   avatar_shape: string;
@@ -29,7 +29,7 @@ export interface NotesResponse {
 }
 
 /**
- * Tumblr post interface.
+ * Tumblr post interface
  */
 export interface Post {
   blog: {
@@ -41,6 +41,7 @@ export interface Post {
     updated: number;
   };
   blog_name: string;
+  body?: string;
   can_like: boolean;
   can_reblog: boolean;
   can_reply: boolean;
@@ -52,6 +53,7 @@ export interface Post {
   id: number;
   id_string: string;
   image_permalink: string;
+  is_blocks_post_format: string;
   note_count: number;
   photos: any[];
   post_url: string;
@@ -77,4 +79,9 @@ export interface PostsResponse {
   blog: Info;
   posts: Post[];
   total_posts: number;
+}
+
+export interface PostBlocksFormatPhoto {
+  size: number;
+  url: string;
 }
