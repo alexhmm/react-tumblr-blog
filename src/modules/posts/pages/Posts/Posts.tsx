@@ -20,7 +20,7 @@ import styles from './Posts.module.scss';
 
 const Posts = () => {
   const { tagged } = useParams();
-  const { postsGet } = usePosts();
+  const { getPosts } = usePosts();
 
   // Component state
   const [init, setInit] = useState<boolean>(false); // Prevent InfiniteScroll next function on navigate back. Show no founds text after search
@@ -69,7 +69,7 @@ const Posts = () => {
   useEffect(() => {
     // Set posts
     const fetchPosts = async () => {
-      setPosts(await postsGet(limit, 0, tagged), tagged ?? '/');
+      setPosts(await getPosts(limit, 0, tagged), tagged ?? '/');
     };
 
     // On existing object add further posts
@@ -155,7 +155,7 @@ const Posts = () => {
     ) {
       setLoading(true);
       addPosts(
-        await postsGet(
+        await getPosts(
           limit,
           posts[tagged ? tagged : '/'].posts.length,
           tagged

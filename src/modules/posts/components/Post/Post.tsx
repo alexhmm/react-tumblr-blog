@@ -26,7 +26,7 @@ type PostProps = {
 
 const Post = (props: PostProps) => {
   const { smDown, xxxxlDown } = useBreakpoints();
-  const { postDetailLinkStrReplace } = usePosts();
+  const { replacePostDetailLinkStr } = usePosts();
 
   // Component state
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -56,7 +56,7 @@ const Post = (props: PostProps) => {
         <Link
           to={`/post/${props.post.id_string}${
             props.post.summary &&
-            `/${postDetailLinkStrReplace(props.post.summary)}`
+            `/${replacePostDetailLinkStr(props.post.summary)}`
           }`}
           className={clsx(
             styles['post-overlay'],

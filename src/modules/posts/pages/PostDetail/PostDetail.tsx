@@ -51,7 +51,7 @@ const Tag = (props: TagProps) => {
 const PostDetail = () => {
   const { lgDown } = useBreakpoints();
   const { id } = useParams();
-  const { notesGet, postByIdGet } = usePosts();
+  const { getNotes, getPostById } = usePosts();
 
   // Component state
   const [comments, setComments] = useState<IComment[]>([]);
@@ -73,7 +73,7 @@ const PostDetail = () => {
   useEffect(() => {
     const fetchPostById = async () => {
       if (id) {
-        const postsResponse = await postByIdGet(id);
+        const postsResponse = await getPostById(id);
         setPost(postsResponse.posts[0]);
       }
     };
@@ -102,7 +102,7 @@ const PostDetail = () => {
       // Fetch notes if note count is bigger than 0
       const fetchNotes = async () => {
         if (post.id_string) {
-          const notesResponse = await notesGet(post.id_string);
+          const notesResponse = await getNotes(post.id_string);
           onNotesResponse(notesResponse.notes);
         }
       };

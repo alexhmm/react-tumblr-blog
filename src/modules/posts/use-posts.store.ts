@@ -96,6 +96,11 @@ export const usePostsStore = create<PostsState>((set, get) => ({
     // Fetch tumblr posts
     if (fetchPosts) {
       // Set initial posts for specific tag.
+      const isIncludingTag =
+        tag && tag !== '/'
+          ? fetchPosts.posts.length > 0 &&
+            fetchPosts.posts[0].tags.includes(tag)
+          : true;
       set((state: PostsState) => ({
         ...state,
         loading: false,
@@ -104,8 +109,8 @@ export const usePostsStore = create<PostsState>((set, get) => ({
           // Create tag based object
           [tag ?? '/']: {
             offset: 0,
-            posts: fetchPosts.posts,
-            total: fetchPosts.total_posts,
+            posts: isIncludingTag ? fetchPosts.posts : [],
+            total: isIncludingTag ? fetchPosts.total_posts : 0,
           },
         },
         tag,

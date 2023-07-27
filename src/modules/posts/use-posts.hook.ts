@@ -9,7 +9,7 @@ export const usePosts = () => {
    * @param id Post id
    * @returns NotesResponse
    */
-  const notesGet = async (id: string): Promise<NotesResponse> => {
+  const getNotes = async (id: string): Promise<NotesResponse> => {
     const params = {
       api_key: process.env.REACT_APP_API_KEY,
       id,
@@ -43,7 +43,7 @@ export const usePosts = () => {
    * @param tag Tag
    * @returns PostsResponse
    */
-  const postsGet = async (
+  const getPosts = async (
     limit: number,
     offset: number,
     tag?: string
@@ -80,7 +80,7 @@ export const usePosts = () => {
    * @param id Post id
    * @returns Post
    */
-  const postByIdGet = (id: string): Promise<PostsResponse> => {
+  const getPostById = (id: string): Promise<PostsResponse> => {
     const params = {
       api_key: process.env.REACT_APP_API_KEY,
       id,
@@ -112,15 +112,15 @@ export const usePosts = () => {
    * @param summary Post summary
    * @returns Replaced whitespaces post summary
    */
-  const postDetailLinkStrReplace = (summary: string): string => {
+  const replacePostDetailLinkStr = (summary: string): string => {
     // eslint-disable-next-line
     return summary.replace(/\s+|[,\/]/g, '-');
   };
 
   return {
-    notesGet,
-    postsGet,
-    postByIdGet,
-    postDetailLinkStrReplace,
+    getNotes,
+    getPosts,
+    getPostById,
+    replacePostDetailLinkStr,
   };
 };
